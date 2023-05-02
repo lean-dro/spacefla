@@ -1,0 +1,113 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@400;500;600;700;800&display=swap');
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 20px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #F55959;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #121212;
+    width: 105%;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background-color: #121212;
+    font-family: 'Nunito';
+    color: #FFFFFF;
+}
+
+.container{
+    display: flex;
+    margin: auto;
+    width: 85%;
+}
+.header{
+    height: 100px;
+    display: flex;
+}
+.header > .container{
+    justify-content: space-between;
+    align-items: center;
+}
+.header-logo{
+    display: flex;
+    width: 60%;
+    gap: 20px;
+}
+.logo{
+    width: 81px;
+}
+.texto-logo{
+    align-self: center;
+    font-size: 2rem;
+    color: #F55959;
+}
+.navbar{
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-item{
+    font-size: 22px;
+    font-weight: bold;
+    width: 33%;
+    padding: 10px;
+}
+.nav-botao{
+    width: 105px;
+    height: 50px;
+    font-size: 22px;
+    display: flex;
+ 
+    align-items: center;
+    color: #121212;
+    cursor: pointer;
+    font-weight: bold;
+    justify-content: center;
+    background: #F55959;
+    border-radius: 20px;
+}
+.nav-botao:hover{
+    border: 1px solid #F55959;
+    background-color: #121212;
+    color: #F55959;
+}
+.fundo{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background:
+    linear-gradient(0.91deg, rgba(0, 0, 0, 0.76) 18.42%, rgba(0, 0, 0, 0.685124) 41.03%, rgba(0, 0, 0, 0) 98.79%), 
+    url('../img/49112969248_2edd785666_o.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 700px;
+   
+}
+.texto-fundo{
+
+    width: 400px;
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 110px;
+    margin-left: 70px;
+}
+.fundo-destaque{
+    color: #F55959;
+}
