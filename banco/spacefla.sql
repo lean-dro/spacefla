@@ -1,11 +1,24 @@
+
+CREATE DATABASE spacefla;
+USE spacefla;
 CREATE TABLE `usuario` (
   `idUsuario` int NOT NULL AUTO_INCREMENT,
-  `loginUsuario` varchar(50) DEFAULT NULL,
+  `emailUsuario` varchar(50) DEFAULT NULL,
   `senhaUsuario` char(8) DEFAULT NULL,
   `nomeUsuario` varchar(70) DEFAULT NULL,
   PRIMARY KEY (`idUsuario`)
 );
-
+CREATE TABLE jogador(
+  idJogador int primary key auto_increment,
+  numeroJogador int, 
+  posicaoJogador varchar(50),
+  CONSTRAINT CHECK(posicaoJogador IN (
+    'Goleiro', 'Zagueiro', 'Volante', 'Lateral Direito', 'Lateral Esquerdo'
+    ,'Volante', 'Meia', 'Atacante'
+  )),
+  nomeJogador VARCHAR(50),
+  fotoJogador VARCHAR(500)
+);
 CREATE TABLE `corneta` (
   `idCorneta` int NOT NULL AUTO_INCREMENT,
   `tipoCorneta` varchar(30) DEFAULT NULL,
@@ -23,7 +36,7 @@ CREATE TABLE `corneta` (
   CONSTRAINT `corneta_chk_2` CHECK ((`competicao` in ('Carioca','Libertadores,','Brasileiro','Copa do Brasil')))
 );
 
-INSERT INTO jogador 
+INSERT INTO jogador(numeroJogador, posicaoJogador, nomeJogador,fotoJogador)
 VALUES
 (1, 'Goleiro', 'Santos', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/1/1681793652.jpg'),
 (45, 'Goleiro', 'Hugo Souza', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/1/1681794035.jpg'),

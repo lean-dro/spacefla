@@ -1,0 +1,32 @@
+<input type="text" id="input_email">
+<input type="text" id="input_senha">
+<button onclick="logar()">Logar</button>
+
+<script>
+    function logar() {
+        var email = input_email.value;
+        var senha = input_senha.value;
+
+        if(email == "" || senha == ""){
+
+        }
+
+        fetch("/usuarios/autenticar",{
+            method: 'post',
+            headers:{
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: email,
+                senhaServer: senha
+            })
+        }).then(function(resposta) {
+            if(resposta.ok){
+                console.log("oiiiiiiiii")
+            }
+        }
+
+        )
+    }
+
+</script>
