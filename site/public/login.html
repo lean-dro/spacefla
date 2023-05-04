@@ -1,27 +1,75 @@
-<input type="text" id="input_email">
-<input type="text" id="input_senha">
-<button onclick="logar()">Logar</button>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://kit.fontawesome.com/3414ef9aa1.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/login.css" />
+    <title>spacefla | login</title>
+</head>
+
+<body>
+    <div class="header border">
+        <div class="container">
+            <div class="header-logo">
+                <img src="assets/icon/LOGO.svg" alt="" />
+                <p class="texto-logo">spacefla</p>
+            </div>
+
+            <ul class="navbar">
+                <li class="nav-item">Como funciona?</li>
+                <li class="nav-item">Cadastro</li>
+                <li class="nav-item" onclick="window.location.href = 'login.html'">
+                    <div class="nav-botao">Login</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="conteudo">
+        <div class="box">
+            <p class="texto-login">Login</p>
+            <div class="inputs">
+                <div class="input">
+                    <input placeholder="email" type="text" id="input_email">
+                </div>
+                <div class="input">
+                    <input placeholder="senha" type="input" id="input_senha">
+                </div>
+            </div>
+            <div class="nav-botao" onclick="logar()">Logar</div>
+           
+            
+        </div>
+    </div>
+</body>
+
+</html>
+
 
 <script>
     function logar() {
         var email = input_email.value;
         var senha = input_senha.value;
 
-        if(email == "" || senha == ""){
+        if (email == "" || senha == "") {
 
         }
 
-        fetch("/usuarios/autenticar",{
+        fetch("/usuarios/autenticar", {
             method: 'post',
-            headers:{
+            headers: {
                 "Content-type": "application/json"
             },
             body: JSON.stringify({
                 emailServer: email,
                 senhaServer: senha
             })
-        }).then(function(resposta) {
-            if(resposta.ok){
+        }).then(function (resposta) {
+            if (resposta.ok) {
                 console.log("oiiiiiiiii")
             }
         }
