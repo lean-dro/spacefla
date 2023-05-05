@@ -2,17 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="assets/icon/LOGO.svg" type="image/x-icon">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <script
       src="https://kit.fontawesome.com/3414ef9aa1.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="shortcut icon" href="assets/icon/LOGO.svg" type="image/x-icon">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/login.css" />
+    <link rel="stylesheet" href="assets/css/cadastro.css" />
     <title>spacefla | login</title>
   </head>
 
@@ -26,7 +26,7 @@
 
         <ul class="navbar">
           <li class="nav-item"><p>Como funciona?</p></li>
-          <li class="nav-item"><p>Cadastro</p></li>
+          <li class="nav-item"><p class="ativo">Cadastro</p></li>
           <li class="nav-item" onclick="window.location.href = 'login.html'">
             <div class="nav-botao">Login</div>
           </li>
@@ -35,8 +35,11 @@
     </div>
     <div id="conteudo">
       <div class="box">
-        <p class="texto-login">Login</p>
+        <p class="texto-login">Cadastrar</p>
         <div class="inputs">
+          <div class="input">
+            <input placeholder="nome" type="text" id="input_nome" />
+          </div>
           <div class="input">
             <input placeholder="email" type="text" id="input_email" />
           </div>
@@ -45,42 +48,46 @@
           </div>
           <span id="span_mensagem"> </span>
         </div>
-        <div class="nav-botao" onclick="logar()">Logar</div>
+        <div class="nav-botao" onclick="cadastrar()">Cadastrar</div>
       </div>
     </div>
   </body>
 </html>
 
 <script>
-  function logar() {
+  function cadastrar() {
     var mensagem = document.getElementById("span_mensagem");
     var email = input_email.value;
     var senha = input_senha.value;
-
-    if (email == "" || senha == "") {
+    var nome = input_nome.value;
+    if (email == "" || senha == "" || nome == "") {
       mensagem.style.color = "#F55959";
       mensagem.innerHTML = "Preencha todos os campos";
     } else {
-      fetch("/usuarios/autenticar", {
+      fetch("/usuarios/cadastrar", {
         method: "post",
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify({
+          nomeServer: nome,
           emailServer: email,
           senhaServer: senha,
         }),
       }).then(function (resposta) {
         if (resposta.ok) {
-            resposta.json().then(json=>{
-                sessionStorage.EMAIL_USUARIO = json.emailUsuario;
-                sessionStorage.NOME_USUARIO = json.nomeUsuario;
-                sessionStorage.ID_USUARIO = json.idUsuario;
-            });
-            window.location.href = "space/home.html";
-        }else{
-            mensagem.style.color = "#F55959";
-            mensagem.innerHTML = "Houve um problema ao realizar seu login!";
+          mensagem.style.color = "#5DD299";
+          mensagem.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para o login";
+          for (var contadorPonto = 0; contadorPonto < 3; contadorPonto++) {
+            setTimeout(() => {
+              mensagem.innerHTML += ".";
+            }, 1000);
+          }
+          window.location.href = "login.html";
+        } else {
+          mensagem.style.color = "#F55959";
+          mensagem.innerHTML = "Houve um problema ao realizar seu cadastro!";
         }
       });
     }

@@ -1,0 +1,46 @@
+
+
+.container{
+    display: flex;
+    margin: auto;
+    width: 85%;
+}
+.header{
+    height: 100px;
+    display: flex;
+}
+.header.border{
+    border: 1px solid #000000;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.header > .container{
+    justify-content: space-between;
+    align-items: center;
+}
+.header-logo{
+    display: flex;
+    gap: 20px;
+}
+.logo{
+    width: 50px;
+}
+.texto-logo{
+    align-self: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #F55959;
+}
+.navbar{
+    display: flex;
+    width: 45%;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-item{
+    font-size: 22px;
+    font-weight: bold;
+    width: 33%;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}

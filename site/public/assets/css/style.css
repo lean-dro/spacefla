@@ -2,25 +2,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@400;500;600;700;800&display=swap');
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
+    
   }
-  
-  
   /* Track */
   ::-webkit-scrollbar-track {
     background: #f1f1f1;
-    border-radius: 20px;
+  
   }
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #F55959;
+    border-radius: 20px;
+    width: 5px;
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #121212;
-    width: 105%;
 }
 html{
     scroll-behavior: smooth;
@@ -59,11 +59,12 @@ body{
 .texto-logo{
     align-self: center;
     font-size: 2rem;
+    font-weight: bold;
     color: #F55959;
 }
 .navbar{
     display: flex;
-    width: 40%;
+    width: 45%;
     justify-content: space-between;
     align-items: center;
 }
@@ -72,13 +73,22 @@ body{
     font-weight: bold;
     width: 33%;
     padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+.nav-item > p:hover{
+   
+   
+}
+p.ativo{
+    
 }
 .nav-botao{
     width: 105px;
     height: 50px;
     font-size: 22px;
     display: flex;
- 
+    
     align-items: center;
     color: #121212;
     cursor: pointer;
