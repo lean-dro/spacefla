@@ -1,46 +1,182 @@
-
-
-.container{
+::-webkit-scrollbar {
+    width: 3px;
+    
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #121212;
+  
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #F55959;
+    border-radius: 20px;
+    width: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #121212;
+}
+#conteudo{
     display: flex;
-    margin: auto;
-    width: 85%;
+    height: 100vh;
 }
-.header{
-    height: 100px;
+.menu{
     display: flex;
+    width: 25%;
+   
+    border-right: 1px solid #676767;
 }
-.header.border{
-    border: 1px solid #000000;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+.feed{
+    display: flex;
+    height: 100%;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    gap: 100px;
+    border-right: 1px solid #676767;
 }
-.header > .container{
-    justify-content: space-between;
+.infos{
+    display: flex;
+    width: 25%;
+    overflow-y: auto;
+}
+
+.corneta{
+    width: 565px;
+    height: 30%;
+    background: #1A1A1A;
+    border: 1px solid #F55959;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
     align-items: center;
 }
-.header-logo{
+.conteudoCorneta{
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    align-items: start;
+    height: 100%;
+    width: 75%;
 }
-.logo{
-    width: 50px;
+.usuarioComentario{
+    padding: 30px;
+    display: flex;
+    height: 50%;
+    justify-content: space-between;
+    flex-direction: column;
 }
-.texto-logo{
-    align-self: center;
-    font-size: 2rem;
-    font-weight: bold;
+.usuario{
     color: #F55959;
 }
-.navbar{
+.cornetaCurtir{
+    height: 50%; 
+    width: 100%;
+    padding: 30px;
     display: flex;
-    width: 45%;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column-reverse;
 }
-.nav-item{
-    font-size: 22px;
-    font-weight: bold;
-    width: 33%;
-    padding: 10px;
-    text-align: center;
+.fotoJogador{
+    background-size: cover;
+    width: 25%;
+    height: 160px;
+    border-radius: 30px 0px 0px 30px;
+    background-color: #F55959;
+}
+.botao{
+    width: 37px;
+    height: 32px;
     cursor: pointer;
+    background-size: cover;
 }
+.botao:hover{
+    background-image: url('../icon/curtido.svg');
+}
+.curtir{
+   background-image: url('../icon/curtir.svg');
+}
+.curtido{
+    background-image: url('../icon/curtido.svg');
+}
+/* Fotos */
+    .fotoJogador.j1{
+    background-image: url('../img/jogadores/santos.png'); 
+    }      
+    .fotoJogador.j2{
+        background-image: url('../img/jogadores/hugo.png'); 
+    }
+    .fotoJogador.j3{
+        background-image: url('../img/jogadores/matheus.png'); 
+    }
+    .fotoJogador.j4{
+        background-image: url('../img/jogadores/rodrigo.png'); 
+    }
+    .fotoJogador.j5{
+        background-image: url('../img/jogadores/leo.png'); 
+    }
+    .fotoJogador.j6{
+        background-image: url('../img/jogadores/david.png'); 
+    }
+    .fotoJogador.j7{
+        background-image: url('../img/jogadores/fabricio.png'); 
+    }
+    .fotoJogador.j8{
+        background-image: url('../img/jogadores/pablo.png'); 
+    }
+    .fotoJogador.j9{
+        background-image: url('../img/jogadores/matheuszinho.png'); 
+    }
+    .fotoJogador.j10{
+        background-image: url('../img/jogadores/varela.png'); 
+    }
+    .fotoJogador.j11{
+        background-image: url('../img/jogadores/filipe.png'); 
+    }
+    .fotoJogador.j12{
+        background-image: url('../img/jogadores/ayrton.png'); 
+    }
+    .fotoJogador.j13{
+        background-image: url('../img/jogadores/vidal.png'); 
+    }
+    .fotoJogador.j14{
+        background-image: url('../img/jogadores/thiago.png'); 
+    }
+    .fotoJogador.j15{
+        background-image: url('../img/jogadores/pulgar.png'); 
+    }
+    .fotoJogador.j16{
+        background-image: url('../img/jogadores/gerson.png'); 
+    }
+    .fotoJogador.j17{
+        background-image: url('../img/jogadores/ribeiro.png'); 
+    }
+    .fotoJogador.j18{
+        background-image: url('../img/jogadores/arrasca.png'); 
+    }
+    .fotoJogador.j19{
+        background-image: url('../img/jogadores/victor.png'); 
+    }
+    .fotoJogador.j20{
+        background-image: url('../img/jogadores/franca.png'); 
+    }
+    .fotoJogador.j21{
+        background-image: url('../img/jogadores/gabi.png'); 
+    }
+    .fotoJogador.j22{
+        background-image: url('../img/jogadores/bruno.png'); 
+    }
+    .fotoJogador.j23{
+        background-image: url('../img/jogadores/pedro.png'); 
+    }
+    .fotoJogador.j24{
+        background-image: url('../img/jogadores/marinho.png'); 
+    }
+    .fotoJogador.j25{
+        background-image: url('../img/jogadores/cebola.png'); 
+    }
+
+
+ 

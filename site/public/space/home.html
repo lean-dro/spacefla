@@ -15,22 +15,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>spacefla | home</title>
   </head>
-  <body>
-    <div class="header border">
-      <div class="container">
-        <div class="header-logo">
-          <img class="logo" src="../assets/icon/LOGO.svg" alt="" />
-        </div>
+  <body onload="validarSessao()">
+    <div id="conteudo">
+      <div class="menu">
 
-        <ul class="navbar">
-         <span id="span_bem_vindo"></span>
-        </ul>
       </div>
+      <div id="feed" class="feed">
+
+        
+
+      </div>
+
+      <div class="infos"></div>
     </div>
    
   </body>
 </html>
 <script>
   console.log(sessionStorage)
-  span_bem_vindo.innerHTML = sessionStorage.NOME_USUARIO;
+  function curtir(x){
+    x.classList.toggle("curtido");
+  }
+  for (var contador = 1; contador <= 25; contador++) {
+    feed.innerHTML += 
+    `
+    <div class="corneta">
+          <div class="conteudoCorneta">
+            <div class="usuarioComentario">
+              <p class="usuario">@usuario</p>
+              <p class="comentario">o senhor gabriel barbosa vem apresentando um futebol lindo de se ver</p>
+            </div>
+            
+            <div class="cornetaCurtir">
+              <div onclick="curtir(this)" class="botao curtir"></div>
+            </div>
+
+          </div>
+          <div class="fotoJogador j${contador}"></div>
+        </div>
+    `
+    
+  }
 </script>

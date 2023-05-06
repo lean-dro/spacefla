@@ -38,35 +38,35 @@ CREATE TABLE `corneta` (
 
 INSERT INTO jogador(numeroJogador, posicaoJogador, nomeJogador,fotoJogador)
 VALUES
-(1, 'Goleiro', 'Santos', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/1/1681793652.jpg'),
-(45, 'Goleiro', 'Hugo Souza', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/1/1681794035.jpg'),
-(25, 'Goleiro', 'Matheus Cunha', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/1/1681793679.jpg'),
+(1, 'Goleiro', 'Santos', 'santos.png'),
+(45, 'Goleiro', 'Hugo Souza', 'hugo.png'),
+(25, 'Goleiro', 'Matheus Cunha', 'matheus.png'),
 
-(3, 'Zagueiro', 'Rodrigo Caio', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/2/1681793122.jpg'),
-(4, 'Zagueiro', 'Léo Pereira', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/2/1681792369.jpg'),
-(23, 'Zagueiro', 'David Luiz', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/2/1681792790.jpg'),
-(15, 'Zagueiro', 'Fabrício Bruno', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/2/1681793171.jpg'),
-(30, 'Zagueiro', 'Pablo', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/2/1681793342.jpg'),
+(3, 'Zagueiro', 'Rodrigo Caio', 'rodrigo.png'),
+(4, 'Zagueiro', 'Léo Pereira', 'leo.png'),
+(23, 'Zagueiro', 'David Luiz', 'david.png'),
+(15, 'Zagueiro', 'Fabrício Bruno', 'fabricio.png'),
+(30, 'Zagueiro', 'Pablo', 'pablo.png'),
 
-(34, 'Lateral Direito',  'Matheuzinho', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/3/1676389656.png'),
-(2, 'Lateral Direito', 'Varela', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/3/1681793440.jpg'),
+(34, 'Lateral Direito',  'Matheuzinho', 'matheuszinho.png'),
+(2, 'Lateral Direito', 'Varela', 'varela.png'),
 
-(16, 'Lateral Esquerdo', 'Filipe Luís', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/4/1681792841.jpg'),
-(6, 'Lateral Esquerdo', 'Ayrton Lucas', 'https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/4/1681792936.jpg'),
+(16, 'Lateral Esquerdo', 'Filipe Luís', 'filipe.png'),
+(6, 'Lateral Esquerdo', 'Ayrton Lucas', 'ayrton.png'),
 
 
-(32,'Volante','Arturo Vidal','https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/5/1681794051.jpg'),
-(8,'Volante','Thiago Maia','https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/5/1681793036.jpg'),
-(5,'Volante','Erick','https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/5/1681793372.jpg'),
-(20,'Volante','Gerson','https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/5/1681792999.jpg'),
+(32,'Volante','Arturo Vidal','vidal.png'),
+(8,'Volante','Thiago Maia','thiago.png'),
+(5,'Volante','Erick','pulgar.png'),
+(20,'Volante','Gerson','gerson.png'),
 
-(7,'Meia','Everton Ribeiro','https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/6/1681792746.jpg'),
-(14,'Meia','De Arrascaeta','https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/6/1681793931.jpg'),
-(29,'Meia','Victor Hugo','https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/6/1681793516.jpg'),
-(42,'Meia','Matheus França','https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/6/1681793484.jpg'),
+(7,'Meia','Everton Ribeiro','ribeiro.png'),
+(14,'Meia','De Arrascaeta','arrasca.png'),
+(29,'Meia','Victor Hugo','victor.png'),
+(42,'Meia','Matheus França','franca.png'),
 
-(10,'Atacante','Gabi','https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/7/1681792471.jpg'),
-(27,'Atacante','Bruno Henrique','https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/7/1681793086.jpg'),
-(9,'Atacante','Pedro','https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/7/1681792684.jpg'),
-(31,'Atacante','Marinho','https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/7/1681793410.jpg'),
-(11,'Atacante','Everton','https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/7/1681792900.jpg');
+(10,'Atacante','Gabi','gabi.png'),
+(27,'Atacante','Bruno Henrique','bruno.png'),
+(9,'Atacante','Pedro','pedro.png'),
+(31,'Atacante','Marinho','marinho.png'),
+(11,'Atacante','Everton','cebola.png');
