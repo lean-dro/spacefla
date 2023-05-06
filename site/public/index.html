@@ -3,36 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <script
-      src="https://kit.fontawesome.com/3414ef9aa1.js"
-      crossorigin="anonymous"
-    ></script>
+   
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="shortcut icon" href="assets/icon/LOGO.svg" type="image/x-icon">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/ac1eabd3cd.js" crossorigin="anonymous"></script>
     <title>spacefla | home</title>
   </head>
   <body>
     <div class="header">
       <div class="container">
-        <div class="header-logo">
+        <div onclick="window.location.href = 'index.html'" class="header-logo">
           <img src="assets/icon/LOGO.svg" alt="" />
           <p class="texto-logo">spacefla</p>
         </div>
 
         <ul class="navbar">
-          <li class="nav-item">Como funciona?</li>
-          <li class="nav-item">Cadastro</li>
+          <li class="nav-item" onclick="window.location.href = 'index.html#h1_sobre'">Como funciona?</li>
+          <li class="nav-item" onclick="window.location.href = 'cadastro.html'">Cadastro</li>
           <li class="nav-item" onclick="window.location.href = 'login.html'"> <div class="nav-botao">Login</div></li>
         </ul>
       </div>
     </div>
     <div class="fundo">
       <div class="texto-fundo">
-        Acompanhe e <span class="fundo-destaque">discuta</span> em tempo real o que acontece nos <span class="fundo-destaque">jogos</span> do mais <span class="fundo-destaque">querido</span>
+        <div class="container">
+          
+          <p>Acompanhe e <span class="fundo-destaque">discuta</span> em tempo real o que acontece nos <span class="fundo-destaque">jogos</span> do mais <span class="fundo-destaque">querido</span> 
+          </p>
+          <div class="seta-animacao">
+            <i  class="fa-solid fa-arrow-down seta"></i>
+          </div>
+         
+        </div>
       </div>
     </div>
+    <div class="conteudo">
+      <div class="container">
+        <div class="conteudo-titulo"> 
+          <h1 id="h1_sobre" class="titulo">Sobre</h1>
+        </div>
+        <div class="conteudo-foto-texto sobre">
+          <div class="conteudo-foto sobre"></div>
+          <div class="conteudo-texto">
+            <p>
+              O spacefla é um espaço para comentar e avaliar a performance de um jogador em específico do time. Essa avaliação pode ser direcionada em uma competição específica ou ser considerada positiva ou negativa. Ao mesmo tempo que você comenta, você conseguirá ter acesso a um feed de comentários de outros usuários da plataforma, formando assim um espaço rubro-negro
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="divisao"></div>
+    <div class="conteudo">
+      <div class="container">
+        <div class="conteudo-titulo"> 
+          <h1 class="titulo">Criador</h1>
+        </div>
+        <div class="conteudo-foto-texto">
+          <div class="conteudo-foto"></div>
+          <div class="conteudo-texto">
+            <p>
+              Olá, me chamo Leandro e sou usuário e desenvolvedor de tecnologia. Cresci sempre querendo conhecer mais e mais de como as coisas funcionavam e o por quê delas existirem, esses questionamentos me impulsionaram a escolher o mercado de tecnologia como carreira. Ao mesmo tempo cresci acompanhando muito futebol, o que me rendeu muitas alegrias e tristezas. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="divisao"></div>
+    <div class="conteudo">
+      <div class="container">
+        <div class="conteudo-titulo"> 
+          <h1 class="titulo">Eu e o Flamengo, o Flamengo e eu</h1>
+        </div>
+        <div class="conteudo-foto-texto">
+          <div class="conteudo-gif"></div>
+          <div class="conteudo-texto">
+            <p>
+              Sou ligado ao Flamengo desde meu nascimento no momento que meu pai me deu o nome de Leandro com a intenção de homenagear o ídolo rubro-negro. Acompanhei as glórias e vexames do Mengão, todas ao lado do meu pai, o homem que me ensinou a ser Flamengo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>

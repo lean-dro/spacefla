@@ -1,6 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@400;500;600;700;800&display=swap');
+@import url('animacoes.css');
 ::-webkit-scrollbar {
     width: 10px;
     
@@ -52,15 +53,18 @@ body{
     display: flex;
     width: 60%;
     gap: 20px;
+    
 }
 .logo{
     width: 81px;
+    cursor: pointer;
 }
 .texto-logo{
     align-self: center;
     font-size: 2rem;
     font-weight: bold;
     color: #F55959;
+    cursor: pointer;
 }
 .navbar{
     display: flex;
@@ -76,13 +80,13 @@ body{
     text-align: center;
     cursor: pointer;
 }
-.nav-item > p:hover{
+/* .nav-item > p:hover{
    
    
 }
 p.ativo{
     
-}
+} */
 .nav-botao{
     width: 105px;
     height: 50px;
@@ -115,13 +119,97 @@ p.ativo{
    
 }
 .texto-fundo{
-
-    width: 400px;
+    display: flex;
     font-weight: 700;
     font-size: 32px;
-    margin-bottom: 110px;
-    margin-left: 70px;
+    height: 35%;
+   
+}
+.texto-fundo > .container{
+    gap: 10px;
+}
+.texto-fundo > .container > p{
+    width: 400px;
+    text-align: justify;
 }
 .fundo-destaque{
     color: #F55959;
+}
+.seta-animacao{
+    display: flex;
+    align-items: center;
+}
+.seta{
+   color: #F55959;
+   animation: setaFlutuacaoCima;
+   animation-duration: 1s;
+   
+   animation-iteration-count: infinite;
+}
+
+.divisao{
+    height: 1px;
+    width: 100%;
+    background-color: #F55959;
+}
+.conteudo{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+.conteudo > .container{
+    flex-direction: column;
+    gap: 50px;
+}
+.conteudo-titulo{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.titulo{
+    font-weight: bold;
+    font-size: 40px;
+}
+.conteudo-foto-texto{
+    display: flex;
+    height: 80%;
+    align-items: center;
+    justify-content: space-between;
+}
+.conteudo-foto-texto.sobre{
+    flex-direction: row-reverse;
+}
+.conteudo-foto{
+    height: 566px;
+    width: 566px;
+    border-radius: 20px;
+    background-image: url('../img/eu.svg');
+}
+.conteudo-foto.sobre{
+    background-image: url('../icon/LOGO.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.conteudo-gif{
+    width: 360px;
+    height: 640px;
+    border-radius: 20px;
+    background-image: url('../img/eu.gif');
+    margin-left: 8%;
+}
+.conteudo-texto{
+    align-self: center;
+    display: flex;
+    align-items: center;
+    width: 500px;
+    height: 240px;
+    padding: 45px 45px;
+    border: 4px solid #F55959;
+    border-radius: 40px;
+    font-size: 22px;
+    text-align: justify;
+    line-height: 33px;
+}
+.conteudo-texto > p{
+    width: 100%;
 }

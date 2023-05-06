@@ -1,0 +1,8 @@
+@keyframes setaFlutuacaoCima {
+    0%{
+       -webkit-transform: translateY(0);
+    }
+    100%{
+        -webkit-transform: translateY(20px);
+    }
+}
