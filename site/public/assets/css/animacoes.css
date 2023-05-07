@@ -1,8 +1,11 @@
-@keyframes setaFlutuacaoCima {
-    0%{
-       -webkit-transform: translateY(0);
-    }
-    100%{
-        -webkit-transform: translateY(20px);
-    }
+@keyframes setaFlutuacao {
+    0% {
+        transform: translateY(-40px);
+      }
+      50% {
+        transform: translateY(0px);
+      }
+      100% {
+        transform: translateY(-40px);
+      }
 }

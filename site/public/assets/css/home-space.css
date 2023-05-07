@@ -36,7 +36,7 @@
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
-    gap: 100px;
+   justify-content: space-between;
     border-right: 1px solid #676767;
 }
 .infos{
@@ -49,46 +49,75 @@
     width: 565px;
     height: 30%;
     background: #1A1A1A;
-    border: 1px solid #F55959;
+    border: 2px solid #F55959;
     border-radius: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.conteudoCorneta{
+.escopoCorneta{
     display: flex;
     flex-direction: column;
     align-items: start;
     height: 100%;
-    width: 75%;
+    width: 70%;
 }
-.usuarioComentario{
+.conteudoCorneta{
     padding: 30px;
+    padding-bottom: 0;
     display: flex;
     height: 50%;
     justify-content: space-between;
     flex-direction: column;
 }
+.infosCorneta{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+   width: 100%;
+   font-weight: 800;
+}
+.icon-competicao{
+    width: 23px;
+    background-color: white;
+    border-radius: 100px;
+    padding: 5px;
+}
 .usuario{
+    color: #F55959;
+    font-size: 21px;
+}
+.comentario{
+    font-size: 14px;
+    font-weight: 400;
+}
+.tipo-corneta{
+    font-size: 12px;
+}
+.tipo-corneta.Positiva{
+    color: #5DD299;
+}
+.tipo-corneta.Negativa{
     color: #F55959;
 }
 .cornetaCurtir{
     height: 50%; 
-    width: 100%;
+   
     padding: 30px;
+    padding-bottom: 15px;
     display: flex;
     flex-direction: column-reverse;
 }
 .fotoJogador{
     background-size: cover;
-    width: 25%;
-    height: 160px;
-    border-radius: 30px 0px 0px 30px;
+    width: 30%;
+    height: 101%;
+    border-radius: 0px 28px 28px 0px;
     background-color: #F55959;
 }
 .botao{
-    width: 37px;
-    height: 32px;
+    width: 28px;
+    height: 24px;
     cursor: pointer;
     background-size: cover;
 }

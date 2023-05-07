@@ -15,7 +15,6 @@
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #F55959;
-    border-radius: 20px;
     width: 5px;
   }
   
@@ -115,14 +114,14 @@ p.ativo{
     url('../img/49112969248_2edd785666_o.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 700px;
+    height: 100vh;
    
 }
 .texto-fundo{
     display: flex;
     font-weight: 700;
     font-size: 32px;
-    height: 35%;
+    height: 60%;
    
 }
 .texto-fundo > .container{
@@ -137,14 +136,11 @@ p.ativo{
 }
 .seta-animacao{
     display: flex;
-    align-items: center;
+    align-items: flex-end;
 }
 .seta{
    color: #F55959;
-   animation: setaFlutuacaoCima;
-   animation-duration: 1s;
-   
-   animation-iteration-count: infinite;
+   animation: setaFlutuacao 2s infinite ease-in-out;
 }
 
 .divisao{

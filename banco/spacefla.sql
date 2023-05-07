@@ -32,8 +32,8 @@ CREATE TABLE `corneta` (
   KEY `fkUsuario` (`fkUsuario`),
   CONSTRAINT `corneta_ibfk_1` FOREIGN KEY (`fkJogador`) REFERENCES `jogador` (`idJogador`),
   CONSTRAINT `corneta_ibfk_2` FOREIGN KEY (`fkUsuario`) REFERENCES `usuario` (`idUsuario`),
-  CONSTRAINT `corneta_chk_1` CHECK ((`tipoCorneta` in ('Positiva','Negativa'))),
-  CONSTRAINT `corneta_chk_2` CHECK ((`competicao` in ('Carioca','Libertadores,','Brasileiro','Copa do Brasil')))
+  CONSTRAINT `chkTIpo` CHECK ((`tipoCorneta` in ('Jogando bem','Jogando mal'))),
+  CONSTRAINT `chkCompeticao` CHECK ((`competicao` in ('Libertadores','Brasileiro','Copa do Brasil')))
 );
 
 INSERT INTO jogador(numeroJogador, posicaoJogador, nomeJogador,fotoJogador)
