@@ -2,13 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="assets/icon/LOGO.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/icon/LOGO.svg" type="image/x-icon" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <script
-      src="https://kit.fontawesome.com/3414ef9aa1.js"
+      src="https://kit.fontawesome.com/ac1eabd3cd.js"
       crossorigin="anonymous"
     ></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -25,9 +26,18 @@
         </div>
 
         <ul class="navbar">
-          <li class="nav-item" onclick="window.location.href = 'index.html#h1_sobre'">Como funciona?</li>
-          <li class="nav-item" onclick="window.location.href = 'cadastro.html'">Cadastro</li>
-          <li class="nav-item" onclick="window.location.href = 'login.html'"> <div class="nav-botao">Login</div></li>
+          <li
+            class="nav-item"
+            onclick="window.location.href = 'index.html#h1_sobre'"
+          >
+            Como funciona?
+          </li>
+          <li class="nav-item" onclick="window.location.href = 'cadastro.html'">
+            Cadastro
+          </li>
+          <li class="nav-item" onclick="window.location.href = 'login.html'">
+            <div class="nav-botao">Login</div>
+          </li>
         </ul>
       </div>
     </div>
@@ -70,15 +80,15 @@
         }),
       }).then(function (resposta) {
         if (resposta.ok) {
-            resposta.json().then(json=>{
-                sessionStorage.EMAIL_USUARIO = json.emailUsuario;
-                sessionStorage.NOME_USUARIO = json.nomeUsuario;
-                sessionStorage.ID_USUARIO = json.idUsuario;
-            });
-            window.location.href = "space/home.html";
-        }else{
-            mensagem.style.color = "#F55959";
-            mensagem.innerHTML = "Houve um problema ao realizar seu login!";
+          resposta.json().then((json) => {
+            sessionStorage.EMAIL_USUARIO = json.emailUsuario;
+            sessionStorage.NOME_USUARIO = json.nomeUsuario;
+            sessionStorage.ID_USUARIO = json.idUsuario;
+          });
+          window.location.href = "space/home.html";
+        } else {
+          mensagem.style.color = "#F55959";
+          mensagem.innerHTML = "Houve um problema ao realizar seu login!";
         }
       });
     }

@@ -2,12 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="../assets/icon/LOGO.svg" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="../assets/icon/LOGO.svg"
+      type="image/x-icon"
+    />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <script
-      src="https://kit.fontawesome.com/3414ef9aa1.js"
+      src="https://kit.fontawesome.com/ac1eabd3cd.js"
       crossorigin="anonymous"
     ></script>
+
     <link rel="stylesheet" href="../assets/css/reset.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/home-space.css" />
@@ -17,51 +22,42 @@
   </head>
   <body onload="validarSessao(), obterCornetas()">
     <div id="conteudo">
-      <div class="menu">
-
-      </div>
-      <div id="feed" class="feed">
-
-       
-
-      </div>
+      <div class="menu"></div>
+      <div id="feed" class="feed"></div>
 
       <div class="infos"></div>
     </div>
-   
   </body>
 </html>
 <script>
-  console.log(sessionStorage)
-  function curtir(x){
+  console.log(sessionStorage);
+  function curtir(x) {
     x.classList.toggle("curtido");
   }
 
-  function obterCornetas(){
-    fetch('/cornetas/listar',{
+  function obterCornetas() {
+    fetch("/cornetas/listar", {
       method: "get",
       headers: {
-          "Content-type": "application/json",
-      } 
-    }).then(function(resposta) {
+        "Content-type": "application/json",
+      },
+    }).then(function (resposta) {
       if (resposta.ok) {
-        resposta.json().then(json=>{
+        resposta.json().then((json) => {
           console.log(json[0].idCorneta);
           for (var contador = 0; contador < json.length; contador++) {
-            
             var comentario = json[contador].comentarioCorneta;
             var idJogador = json[contador].fkJogador;
-            var usuario =  json[contador].nomeUsuario;
+            var usuario = json[contador].nomeUsuario;
             var competicao = json[contador].competicao;
             var tipo = json[contador].tipoCorneta;
             var classeTipo;
             if (tipo == "Jogando bem") {
-              classeTipo = "Positiva"
-            }else{
-              classeTipo = "Negativa"
+              classeTipo = "Positiva";
+            } else {
+              classeTipo = "Negativa";
             }
-            feed.innerHTML += 
-                    `
+            feed.innerHTML += `
                     <div class="corneta">
                           <div class="escopoCorneta">
                             <div class="conteudoCorneta">
@@ -81,14 +77,12 @@
                           </div>
                           <div class="fotoJogador j${idJogador}"></div>
                         </div>
-                    `
+                    `;
           }
         });
-      }else{  
-        feed.innerHTML = "Sem cornetas por enquanto..."
+      } else {
+        feed.innerHTML = "Sem cornetas por enquanto...";
       }
-    })
+    });
   }
-
-
 </script>
