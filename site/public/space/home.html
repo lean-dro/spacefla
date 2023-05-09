@@ -33,16 +33,16 @@
           ></i>
           <h1 class="titulo-modal">Faça sua corneta</h1>
           <div class="selects">
-            <select class="select-secundario" name="" id="">
+            <select class="select-secundario" name="" id="select_atuacao">
               <option value="">Atuação</option>
-              <option style="color: #5dd299" value="">Jogando bem</option>
-              <option style="color: #f3b72f" value="">Jogando mal</option>
+              <option style="color: #5dd299" value="Jogando bem">Jogando bem</option>
+              <option style="color: #f3b72f" value="Jogando mal">Jogando mal</option>
             </select>
-            <select class="select-secundario" name="" id="">
-              <option value="">Competição</option>
-              <option value="">Brasileiro</option>
-              <option value="">Copa do Brasil</option>
-              <option value="">Libertadores</option>
+            <select class="select-secundario" name="" id="select_competicao">
+              <option value="0">Competição</option>
+              <option value="Brasileiro">Brasileiro</option>
+              <option value="Copa do Brasil">Copa do Brasil</option>
+              <option value="Libertadores">Libertadores</option>
             </select>
           </div>
           <div class="analise">
@@ -51,7 +51,7 @@
               cols="10"
               rows="10"
               name=""
-              id=""
+              id="textarea_analise"
               placeholder="Faça sua análise..."
             ></textarea>
           </div>
@@ -62,7 +62,7 @@
             <option value="">Escolha um Jogador</option>
            
           </select>
-          <div class="botao-modal">
+          <div class="botao-modal" onclick="cadastrarCorneta()">
             <img class="corneta-icon" src="../assets/icon/corneta.svg" alt="" />
           </div>
         </div>
@@ -146,7 +146,7 @@
       ultimoJogador = classe;
     }
    
-
+    
   }
   function toggleModal() {
     fundo_modal.classList.toggle("show");
@@ -221,5 +221,36 @@
         })
       }
     });
+  }
+
+  function cadastrarCorneta() {
+    var corneta = {
+      atuacao: select_atuacao.value,
+      competicao: select_competicao.value,
+      idJogador: select_jogador.value,
+      analise: textarea_analise,
+      usuario: sessionStorage.ID_USUARIO
+    }
+    fetch('/cornetas/cadastrar',{
+      method: "post",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        tipoServer: select_atuacao.value,
+        competicaoServer: select_competicao.value,
+        jogadorServer: select_jogador.value,
+        comentarioServer: textarea_analise,
+        usuarioServer: sessionStorage.ID_USUARIO
+      }),
+    }).then(function(resposta) {
+      if(resposta.ok){
+        setTimeout(() => {
+              toggleModal()
+        }, 1000);
+      }else{
+        alert("ero")
+      }
+    })
   }
 </script>
