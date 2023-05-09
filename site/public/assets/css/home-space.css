@@ -23,20 +23,14 @@
     display: flex;
     height: 100vh;
 }
-.menu{
-    display: flex;
-    width: 25%;
-   
-    border-right: 1px solid #676767;
-}
+
 .feed{
-    display: flex;
-    height: 100%;
     width: 50%;
-    flex-direction: column;
-    align-items: center;
+   
+    
+   
     overflow-y: auto;
-   justify-content: space-between;
+ 
     border-right: 1px solid #676767;
 }
 .infos{
@@ -47,7 +41,10 @@
 
 .corneta{
     width: 565px;
-    height: 30%;
+    height: 240px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
     background: #1A1A1A;
     border: 2px solid #F55959;
     border-radius: 30px;
@@ -60,7 +57,7 @@
     flex-direction: column;
     align-items: start;
     height: 100%;
-    width: 70%;
+    width: 72%;
 }
 .conteudoCorneta{
     padding: 30px;
@@ -110,8 +107,9 @@
 }
 .fotoJogador{
     background-size: cover;
-    width: 30%;
+    width: 28%;
     height: 101%;
+    background-position-x: center;
     border-radius: 0px 28px 28px 0px;
     background-color: #F55959;
 }

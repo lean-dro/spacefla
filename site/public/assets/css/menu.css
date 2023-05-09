@@ -1,0 +1,49 @@
+.menu{
+    display: flex;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid #676767;
+    padding: 20px;
+}
+.escopo-menu{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.logo-menu > img{
+    width: 50px;
+}
+.tabs{
+    font-weight: bolder;
+    font-size: 20px;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+.item-tab{
+    cursor: pointer;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+}
+.tab-icon{
+    width: 30px;
+    fill: white;
+}
+.botao-corneta{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 200px;
+    height: 30px;
+    background: #F55959;
+    border-radius: 10px;
+}

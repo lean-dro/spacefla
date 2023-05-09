@@ -7,3 +7,7 @@ function listar() {
     return database.executar(instrucao)
 }
 
+module.exports = {
+    listar
+};
+

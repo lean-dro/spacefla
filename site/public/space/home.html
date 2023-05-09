@@ -8,21 +8,117 @@
       type="image/x-icon"
     />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <script
+    <!-- <script
       src="https://kit.fontawesome.com/ac1eabd3cd.js"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
 
     <link rel="stylesheet" href="../assets/css/reset.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/home-space.css" />
+    <link rel="stylesheet" href="../assets/css/menu.css" />
+    <link rel="stylesheet" href="../assets/css/modal.css" />
+
     <script src="../assets/js/funcoes.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>spacefla | home</title>
   </head>
   <body onload="validarSessao(), obterCornetas()">
+    <div id="fundo_modal" class="fundo-modal">
+      <div class="modal">
+        <div class="modal-escopo">
+          <i
+            onclick="toggleModal(this)"
+            class="fa-solid fa-xmark botao-close-modal"
+          ></i>
+          <h1 class="titulo-modal">Faça sua corneta</h1>
+          <div class="selects">
+            <select class="select-secundario" name="" id="">
+              <option value="">Atuação</option>
+              <option style="color: #5dd299" value="">Jogando bem</option>
+              <option style="color: #f3b72f" value="">Jogando mal</option>
+            </select>
+            <select class="select-secundario" name="" id="">
+              <option value="">Competição</option>
+              <option value="">Brasileiro</option>
+              <option value="">Copa do Brasil</option>
+              <option value="">Libertadores</option>
+            </select>
+          </div>
+          <div class="analise">
+            <textarea
+              wrap="hard"
+              cols="10"
+              rows="10"
+              name=""
+              id=""
+              placeholder="Faça sua análise..."
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-foto-botao">
+          <div id="foto_modal" class="fotoJogador-modal "></div>
+          <select onchange="atualizarJogador()" id="select_jogador"  class="select-jogador" name="" id="">
+            <option value="">Escolha um Jogador</option>
+           
+          </select>
+          <div class="botao-modal">
+            <img class="corneta-icon" src="../assets/icon/corneta.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="conteudo">
-      <div class="menu"></div>
+      <div class="menu">
+        <div class="escopo-menu">
+          <div class="logo-menu">
+            <img src="../assets/icon/LOGO.svg" alt="" />
+          </div>
+          <div class="tabs">
+            <div class="item-tab">
+              <svg
+                class="tab-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 576 512"
+              >
+                <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
+                />
+              </svg>
+
+              <span>feed</span>
+            </div>
+            <div class="item-tab">
+              <svg
+                class="tab-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M32 32c17.7 0 32 14.3 32 32V400c0 8.8 7.2 16 16 16H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-44.2 0-80-35.8-80-80V64C0 46.3 14.3 32 32 32zM160 224c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32s-32-14.3-32-32V256c0-17.7 14.3-32 32-32zm128-64V320c0 17.7-14.3 32-32 32s-32-14.3-32-32V160c0-17.7 14.3-32 32-32s32 14.3 32 32zm64 32c17.7 0 32 14.3 32 32v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V224c0-17.7 14.3-32 32-32zM480 96V320c0 17.7-14.3 32-32 32s-32-14.3-32-32V96c0-17.7 14.3-32 32-32s32 14.3 32 32z"
+                />
+              </svg>
+
+              <span> dados </span>
+            </div>
+            <div onclick="toggleModal()" class="item-tab botao-corneta">
+              <img
+                src="../assets/icon/corneta.svg"
+                class="corneta-icon"
+                alt=""
+              />
+              <span> cornetar </span>
+            </div>
+          </div>
+          <div class="tab-sair">
+            <div class="item-tab">sair</div>
+          </div>
+        </div>
+      </div>
+
       <div id="feed" class="feed"></div>
 
       <div class="infos"></div>
@@ -30,11 +126,32 @@
   </body>
 </html>
 <script>
+  var ultimoJogador="";
   console.log(sessionStorage);
   function curtir(x) {
     x.classList.toggle("curtido");
   }
+  function atualizarJogador() {
+    var foto = document.getElementById("foto_modal").classList;
+    var idJogador = select_jogador.value;
+    var classe
+    if(ultimoJogador == ""){
+       classe = "j"+idJogador;
+       foto.add(classe)
+       ultimoJogador = classe;
+    }else{
+      foto.remove(ultimoJogador);
+      classe = "j"+idJogador;
+      foto.add(classe)
+      ultimoJogador = classe;
+    }
+   
 
+  }
+  function toggleModal() {
+    fundo_modal.classList.toggle("show");
+    buscarJogadores();
+  }
   function obterCornetas() {
     fetch("/cornetas/listar", {
       method: "get",
@@ -44,20 +161,23 @@
     }).then(function (resposta) {
       if (resposta.ok) {
         resposta.json().then((json) => {
-          console.log(json[0].idCorneta);
-          for (var contador = 0; contador < json.length; contador++) {
-            var comentario = json[contador].comentarioCorneta;
-            var idJogador = json[contador].fkJogador;
-            var usuario = json[contador].nomeUsuario;
-            var competicao = json[contador].competicao;
-            var tipo = json[contador].tipoCorneta;
-            var classeTipo;
-            if (tipo == "Jogando bem") {
-              classeTipo = "Positiva";
-            } else {
-              classeTipo = "Negativa";
-            }
-            feed.innerHTML += `
+          if (json.length == 0) {
+          } else {
+            console.log(json[0].idCorneta);
+            for (var contador = 0; contador < json.length; contador++) {
+              var comentario = json[contador].comentarioCorneta;
+              var idJogador = json[contador].fkJogador;
+              var usuario = json[contador].nomeUsuario;
+              var competicao = json[contador].competicao;
+              var tipo = json[contador].tipoCorneta;
+              var classeTipo;
+              if (tipo == "Jogando bem") {
+                classeTipo = "Positiva";
+              } else {
+                classeTipo = "Negativa";
+              }
+              feed.innerHTML += `
+            
                     <div class="corneta">
                           <div class="escopoCorneta">
                             <div class="conteudoCorneta">
@@ -78,10 +198,27 @@
                           <div class="fotoJogador j${idJogador}"></div>
                         </div>
                     `;
+            }
           }
         });
       } else {
         feed.innerHTML = "Sem cornetas por enquanto...";
+      }
+    });
+  }
+  function buscarJogadores() {
+    fetch("/jogadores/listar", {
+      method: "get",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then((json) =>{
+          for (var contadorJogadores = 0; contadorJogadores < json.length; contadorJogadores++) {
+            select_jogador.innerHTML += `<option value='${json[contadorJogadores].idJogador}'>${json[contadorJogadores].nomeJogador}</option>`
+          }
+        })
       }
     });
   }

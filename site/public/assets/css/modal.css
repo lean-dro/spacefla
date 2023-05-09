@@ -2,10 +2,13 @@
     background: rgba(0, 0, 0, 0.65);
     width: 100vw;
     height: 100vh;
-    display: flex;
+    display: none;
     z-index: 1;
     position: fixed;
     
+}
+.fundo-modal.show{
+    display: flex;
 }
 .modal{
     width: 857px;
@@ -19,6 +22,7 @@
 width: 65%;
 display: flex;
 padding: 50px;
+padding-top: 15px;
 justify-content: space-between;
 flex-direction: column;
 }
@@ -54,9 +58,11 @@ font-size: 40px;
 }
 .analise >textarea{
      all: unset; 
-    height: 100%;
-    text-align: start;
     width: 100%;
+    text-align: start;
+   resize: none;
+   white-space: pre-wrap;
+    overflow-wrap: break-word;
     
 }
 ::-webkit-input-placeholder{
@@ -116,7 +122,10 @@ font-size: 15px;
     padding-left: 20px;
     border-color: transparent !important;
 }
-
+.botao-close-modal{
+    cursor: pointer;
+    color: #ffffff;font-size: 18px;
+}
 .fotoJogador-modal.j1{
     background-image: url('../img/jogadores/santos.png'); 
     }      
