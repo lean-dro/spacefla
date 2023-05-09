@@ -128,6 +128,9 @@
 .curtido{
     background-image: url('../icon/curtido.svg');
 }
+#span_aviso{
+    color: #F3B72F;
+}
 /* Fotos */
     .fotoJogador.j1{
     background-image: url('../img/jogadores/santos.png'); 

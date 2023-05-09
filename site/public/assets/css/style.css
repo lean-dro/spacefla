@@ -29,6 +29,7 @@ body{
     background-color: #121212;
     font-family: 'Nunito';
     color: #FFFFFF;
+    scroll-behavior: smooth;
 }
 
 .container{
@@ -79,13 +80,12 @@ body{
     text-align: center;
     cursor: pointer;
 }
-/* .nav-item > p:hover{
-   
+.nav-item > a{
+   text-decoration: none;
+   color: white;
    
 }
-p.ativo{
-    
-} */
+
 .nav-botao{
     width: 105px;
     height: 50px;

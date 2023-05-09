@@ -26,12 +26,7 @@
         </div>
 
         <ul class="navbar">
-          <li
-            class="nav-item"
-            onclick="window.location.href = 'index.html#h1_sobre'"
-          >
-            Como funciona?
-          </li>
+          <li class="nav-item"> <a href="index.html#h1_sobre">Como funciona?</a></li>
           <li class="nav-item" onclick="window.location.href = 'cadastro.html'">
             Cadastro
           </li>
@@ -53,22 +48,44 @@
           </div>
           <span id="span_mensagem"> </span>
         </div>
-        <div class="nav-botao" onclick="logar()">Logar</div>
+        <div class="nav-botao" onclick="validar()">Logar</div>
       </div>
     </div>
   </body>
 </html>
 
 <script>
-  function logar() {
-    var mensagem = document.getElementById("span_mensagem");
+var mensagem = document.getElementById("span_mensagem");
+  function validar() {
     var email = input_email.value;
     var senha = input_senha.value;
-
-    if (email == "" || senha == "") {
+  
+    var entradasInvalidas = 
+      (email.length == 0 || senha.length == 0)  
+      ||
+      ((email.indexOf("@") == -1) || (email.indexOf(".") == -1))
+      ||
+      (senha.length > 8)
+      ||
+      (senha.length < 4)
+    ;
+    if(entradasInvalidas){
       mensagem.style.color = "#F55959";
-      mensagem.innerHTML = "Preencha todos os campos";
-    } else {
+      if((email.length == 0 || senha.length == 0)  ){
+        mensagem.innerHTML = "Preencha todos os campos!";
+      }else if(((email.indexOf("@") == -1) || (email.indexOf(".") == -1))){
+        mensagem.innerHTML = "Insira um email válido!";
+      }else if(senha.length > 8){
+        mensagem.innerHTML = "Senha com mais de 8 caracteres!";
+      }else{
+        mensagem.innerHTML = "Senha menor que 4 caracteres!";
+      }
+    }else{
+      logar(email, senha)
+    }
+  }
+  function logar(email, senha) {
+    
       fetch("/usuarios/autenticar", {
         method: "post",
         headers: {
@@ -91,6 +108,5 @@
           mensagem.innerHTML = "Houve um problema ao realizar seu login!";
         }
       });
-    }
   }
 </script>

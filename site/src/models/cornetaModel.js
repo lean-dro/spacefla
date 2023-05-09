@@ -5,7 +5,8 @@ function listar() {
     console.log("Acessando corneta model");
     var instrucao = `
         SELECT corneta.*, nomeUsuario FROM corneta 
-            INNER JOIN usuario ON corneta.fkUsuario = usuario.idUsuario;
+            INNER JOIN usuario ON corneta.fkUsuario = usuario.idUsuario
+            ORDER BY dataCorneta DESC;
     `
     console.log("Executando a instrução sql: "+instrucao);
     return database.executar(instrucao);

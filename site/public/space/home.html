@@ -55,6 +55,7 @@
               placeholder="Faça sua análise..."
             ></textarea>
           </div>
+          <span id="span_aviso"></span>
         </div>
         <div class="modal-foto-botao">
           <div id="foto_modal" class="fotoJogador-modal "></div>
@@ -62,7 +63,7 @@
             <option value="">Escolha um Jogador</option>
            
           </select>
-          <div class="botao-modal" onclick="cadastrarCorneta()">
+          <div class="botao-modal" onclick="validarCadastro()">
             <img class="corneta-icon" src="../assets/icon/corneta.svg" alt="" />
           </div>
         </div>
@@ -228,18 +229,44 @@
       }
     });
   }
+  function validarCadastro() {
+    var atuacao = select_atuacao.value;
+    var competicao = select_competicao.value;
+    var jogador =  select_jogador.value;
+    var analise = textarea_analise.value;
 
-  function cadastrarCorneta() {
+    var entradasInvalidas = 
+    (atuacao == 0) ||
+    (competicao == 0) ||
+    (jogador == 0) ||
+    (analise.length == 0)
+    
+    if(entradasInvalidas){
+      if(atuacao == 0){
+        span_aviso.innerHTML = "Selecione a atuação!"
+      }else if(competicao == 0){
+        span_aviso.innerHTML = "Selecione a competição!"
+      }else if(jogador == 0){
+        span_aviso.innerHTML = "Selecione um jogador!"
+      }else{
+        span_aviso.innerHTML = "Faça uma análise!"
+      }
+    }else{
+      cadastrarCorneta(atuacao, competicao, jogador, analise)
+    }
+
+  }
+  function cadastrarCorneta(tipo, competicao, jogador, analise) {
     fetch('/cornetas/cadastrar',{
       method: "post",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        tipoServer: select_atuacao.value,
-        competicaoServer: select_competicao.value,
-        jogadorServer: select_jogador.value,
-        comentarioServer: textarea_analise.value,
+        tipoServer: tipo,
+        competicaoServer: competicao,
+        jogadorServer: jogador,
+        comentarioServer: analise,
         usuarioServer: sessionStorage.ID_USUARIO
       }),
     }).then(function(resposta) {
@@ -248,7 +275,7 @@
              
           location.reload()
               
-        }, 1000);
+        }, 500);
       }else{
         alert("ero")
       }
