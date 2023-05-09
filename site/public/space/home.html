@@ -161,7 +161,9 @@
     }).then(function (resposta) {
       if (resposta.ok) {
         resposta.json().then((json) => {
+          console.log(json)
           if (json.length == 0) {
+            feed.innerHTML = "Sem cornetas por enquanto...";
           } else {
             console.log(json[0].idCorneta);
             for (var contador = 0; contador < json.length; contador++) {
@@ -200,10 +202,14 @@
                     `;
             }
           }
+        }).catch(function(erro) {
+          console.log(erro)
         });
       } else {
         feed.innerHTML = "Sem cornetas por enquanto...";
       }
+    }).catch(function(erro){
+      console.log(erro)
     });
   }
   function buscarJogadores() {
@@ -224,13 +230,6 @@
   }
 
   function cadastrarCorneta() {
-    var corneta = {
-      atuacao: select_atuacao.value,
-      competicao: select_competicao.value,
-      idJogador: select_jogador.value,
-      analise: textarea_analise,
-      usuario: sessionStorage.ID_USUARIO
-    }
     fetch('/cornetas/cadastrar',{
       method: "post",
       headers: {
@@ -240,13 +239,15 @@
         tipoServer: select_atuacao.value,
         competicaoServer: select_competicao.value,
         jogadorServer: select_jogador.value,
-        comentarioServer: textarea_analise,
+        comentarioServer: textarea_analise.value,
         usuarioServer: sessionStorage.ID_USUARIO
       }),
     }).then(function(resposta) {
       if(resposta.ok){
         setTimeout(() => {
-              toggleModal()
+             
+          location.reload()
+              
         }, 1000);
       }else{
         alert("ero")
