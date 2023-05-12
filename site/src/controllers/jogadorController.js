@@ -5,6 +5,7 @@ function listar(req, res) {
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
+                console.log(resultado)
             } else {
                 res.status(204).send("Nenhum resultado encontrado!")
             }

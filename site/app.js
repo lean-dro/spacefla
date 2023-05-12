@@ -12,6 +12,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var cornetaRouter = require("./src/routes/cornetas");
 var jogadorRouter = require("./src/routes/jogadores")
+var curtidasRouter = require("./src/routes/curtidas")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -23,6 +24,8 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/cornetas", cornetaRouter);
 app.use("/jogadores", jogadorRouter);
+app.use("/curtidas", curtidasRouter)
+
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
     Você está rodando sua aplicação em Ambiente de ${process.env.AMBIENTE_PROCESSO} \n

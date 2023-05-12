@@ -4,8 +4,12 @@ var database = require("../database/config");
 function listar() {
     console.log("Acessando corneta model");
     var instrucao = `
-        SELECT corneta.*, nomeUsuario FROM corneta 
+        SELECT corneta.*, nomeUsuario, COUNT(idCurtida) as curtidas FROM corneta 
+        left JOIN curtidaCorneta on corneta.idCorneta = fkCorneta 
             INNER JOIN usuario ON corneta.fkUsuario = usuario.idUsuario
+
+            GROUP BY corneta.idCorneta, 
+            corneta.tipoCorneta, corneta.comentarioCorneta, corneta.dataCorneta, corneta.competicao, fkJogador, fkUsuario
             ORDER BY dataCorneta DESC;
     `
     console.log("Executando a instrução sql: "+instrucao);

@@ -35,7 +35,16 @@ CREATE TABLE `corneta` (
   CONSTRAINT `chkTIpo` CHECK ((`tipoCorneta` in ('Jogando bem','Jogando mal'))),
   CONSTRAINT `chkCompeticao` CHECK ((`competicao` in ('Libertadores','Brasileiro','Copa do Brasil')))
 );
-
+CREATE TABLE curtidaCorneta(
+  idCurtida int auto_increment,
+  fkUsuario int,
+  fkCorneta int,
+  dataCurtida DATETIME default current_timestamp,
+  constraint fkUsuario foreign key(fkUsuario) references usuario(idUsuario),
+  constraint fkCorneta foreign key(fkCorneta) references corneta(idCorneta),
+  constraint pkCurtida primary key(idCurtida, fkUsuario, fkCorneta)
+);
+---------------------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO jogador(numeroJogador, posicaoJogador, nomeJogador,fotoJogador)
 VALUES
 (1, 'Goleiro', 'Santos', 'santos.png'),
