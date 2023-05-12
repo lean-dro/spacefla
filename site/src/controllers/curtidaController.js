@@ -2,19 +2,6 @@ var curtidaModel = require("../models/curtidaModel")
 function testar(req,res) {
     console.log("Dentro da curtidaController")
 }
-function verificarCurtidasUsuario(req, res) {
-    var usuario = req.body.usuarioServer;
-    var corneta = req.body.cornetaServer;
-    if(usuario == undefined){
-        res.status(400).send("Usuário indefinido")
-    }else if(corneta == undefined){
-        res.status(400).send("Corneta indefnida")
-    }else{
-        curtidaModel.verificarCurtida(usuario, corneta).then(function(resultado) {
-            res.status(200).json(resultado)
-        })
-    }
-}
 function verificarCurtida(req, res) {
     var usuario = req.body.usuarioServer;
     var corneta = req.body.cornetaServer;
@@ -61,5 +48,4 @@ function verificarCurtida(req, res) {
 module.exports = {
     testar,
     verificarCurtida,
-    verificarCurtidasUsuario
 }

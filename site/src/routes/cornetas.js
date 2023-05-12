@@ -11,6 +11,11 @@ router.get("/listar", function (req, res) {
     cornetaController.listar(req, res);
 });
 
+router.post("/listarCurtidos", function (req, res) {
+    cornetaController.listarCurtidos(req, res);
+});
+
+
 router.post("/cadastrar", function (req, res) {
     cornetaController.cadastrar(req, res);
 })

@@ -23,7 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>spacefla | home</title>
   </head>
-  <body onload="validarSessao()">
+  <body onload="validarSessao(), obterCornetas(), obterCornetasCurtidas()">
     <div id="fundo_modal" class="fundo-modal">
       <div class="modal">
         <div class="modal-escopo">
@@ -128,12 +128,23 @@
 </html>
 <script>
   var ultimoJogador="";
+  var cornetas = [];
+  var cornetasCurtidas = []
 
-  console.log(sessionStorage);
-
-  function curtir(x, corneta) {
-    x.classList.toggle("curtido");
+ async function curtir(x, corneta) {
     
+      
+    
+    if(x.classList.contains("curtido")){
+      x.classList.remove("curtido")
+      x.classList.add("curtir")
+    }else{
+      x.classList.remove("curtir")
+      x.classList.add("curtido")
+    }
+    x.classList.toggle("curtido")
+    
+    console.log(x)
     fetch("/curtidas/verificar",{
       method: "post",
       headers: {
@@ -146,7 +157,10 @@
     }).then(function(resposta) {
         if(resposta.ok){
           resposta.json().then(function(curtidas) {
+           
             console.log(curtidas)
+            obterCornetas()
+            gerarCornetas()
           })
         }else{
           console.log("erro")
@@ -176,8 +190,27 @@
     fundo_modal.classList.toggle("show");
     buscarJogadores();
   }
-  function obterCornetas() {
-    fetch("/cornetas/listar", {
+  async function obterCornetasCurtidas() {
+    await fetch("/cornetas/listarCurtidos", {
+      method: "post",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        usuarioServer: sessionStorage.ID_USUARIO 
+      })
+    }).then(function(resposta) {
+      if (resposta.ok) {
+        resposta.json().then((json) => {
+          cornetasCurtidas = json
+        }).catch(function(erro) {
+          console.log(erro)
+        });
+      }
+    })
+  }
+  async function obterCornetas() {
+    await fetch("/cornetas/listar", {
       method: "get",
       headers: {
         "Content-type": "application/json",
@@ -185,80 +218,13 @@
     }).then(function (resposta) {
       if (resposta.ok) {
         resposta.json().then((json) => {
-          console.log(json)
+          
           if (json.length == 0) {
             feed.innerHTML = "Sem cornetas por enquanto...";
           } else {
+            cornetas = json
+            gerarCornetas()
             
-            for (var contador = 0; contador < json.length; contador++) {
-              var corneta = json[contador].idCorneta;
-              
-             
-              var comentario = json[contador].comentarioCorneta;
-              var idJogador = json[contador].fkJogador;
-              var usuario = json[contador].nomeUsuario;
-              var competicao = json[contador].competicao;
-              var tipo = json[contador].tipoCorneta;
-              var classeTipo;
-              var curtidas = json[contador].curtidas 
-              var curtiu;
-              var classeCurtida;
-              fetch("/curtidas/verificar-curtidas-usuario", {
-                method: "post",
-                headers: {
-                  "Content-type": "application/json",
-                },
-                body:JSON.stringify({
-                  cornetaServer: corneta,
-                  usuarioServer: sessionStorage.ID_USUARIO
-                })
-              }).then(function(respostaCurtida) {
-                  respostaCurtida.json().then((json) => {
-                  curtiu = json[0].curtidas > 0
-                  console.log(curtiu)
-                  if(curtiu == true){
-                  classeCurtida = "curtido"
-                  }else{
-                  classeCurtida = "curtir"
-                  }
-            
-                })
-              }).then(function() {
-                
-              
-              if (tipo == "Jogando bem") {
-                classeTipo = "Positiva";
-              } else {
-                classeTipo = "Negativa";
-              }
-              feed.innerHTML += `
-            
-                    <div class="corneta">
-                          <div class="escopoCorneta">
-                            <div class="conteudoCorneta">
-                              <div class='infosCorneta'>
-                                <p class="usuario">@${usuario} </p>
-                                <img class='icon-competicao' src="../assets/img/competicao/${competicao}.png" alt="">
-                                <p class='tipo-corneta ${classeTipo}'>${tipo}</p>
-
-                                </div>
-                              <p class="comentario">${comentario}</p>
-                            </div>
-                            
-                            <div class="cornetaCurtir">
-                              <div class="botao-efeito">
-                              <div onclick="curtir(this, ${corneta})" class="botao ${classeCurtida}"></div>
-                              </div>
-                              <span id='span_curtidas${corneta}'>${curtidas}</span>
-                            </div>
-
-                          </div>
-                          <div class="fotoJogador j${idJogador}"></div>
-                        </div>
-                    `;
-              })
-
-            }
           }
         }).catch(function(erro) {
           console.log(erro)
@@ -270,6 +236,7 @@
       console.log(erro)
     });
   }
+
   function buscarJogadores() {
     fetch("/jogadores/listar", {
       method: "get",
@@ -338,6 +305,64 @@
       }
     })
   }
-  obterCornetas()
+  
+
+
+  function gerarCornetas() {
+    feed.innerHTML ="";
+    for (var contador = 0; contador < cornetas.length; contador++) {
+              var corneta = cornetas[contador].idCorneta;
+              var comentario = cornetas[contador].comentarioCorneta;
+              var idJogador = cornetas[contador].fkJogador;
+              var usuario = cornetas[contador].nomeUsuario;
+              var competicao = cornetas[contador].competicao;
+              var tipo = cornetas[contador].tipoCorneta;
+              var classeTipo;
+              var curtidas = cornetas[contador].curtidas 
+              var curtiu;
+              var classeCurtida = "curtir";
+              if (tipo == "Jogando bem") {
+                classeTipo = "Positiva";
+              } else {
+                classeTipo = "Negativa";
+              }
+              for(var contadorCurtidos = 0; contadorCurtidos < cornetasCurtidas.length; contadorCurtidos++){
+                if(cornetasCurtidas[contadorCurtidos].fkCorneta){
+                  classeCurtida = "curtido"
+                }else{
+                  classeCurtida = "curtir"
+                }
+              }
+              feed.innerHTML += `
+            
+                    <div class="corneta">
+                          <div class="escopoCorneta">
+                            <div class="conteudoCorneta">
+                              <div class='infosCorneta'>
+                                <p class="usuario">@${usuario} </p>
+                                <img class='icon-competicao' src="../assets/img/competicao/${competicao}.png" alt="">
+                                <p class='tipo-corneta ${classeTipo}'>${tipo}</p>
+
+                                </div>
+                              <p class="comentario">${comentario}</p>
+                            </div>
+                            
+                            <div class="cornetaCurtir">
+                              <div class="botao-efeito">
+                              <div onclick="curtir(this, ${corneta})" id="botao${corneta}" class="botao ${classeCurtida}"></div>
+                              </div>
+                              <span id='span_curtidas${corneta}'>${curtidas}</span>
+                            </div>
+
+                          </div>
+                          <div class="fotoJogador j${idJogador}"></div>
+                        </div>
+                    `;             
+
+            }
+  
+  }
+ 
+  
  
 </script>

@@ -19,6 +19,24 @@ function listar(req, res) {
         );
 }
 
+function listarCurtidos(req,res) {
+    var usuario = req.body.usuarioServer;
+    if(usuario == undefined){
+        res.status(400).send("Seu usuario está undefined!");
+    }else{
+        cornetaModel.listarCurtidos(usuario).then(function(resultado) {
+            res.json(resultado)
+        }).catch(function(erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro ao realizar o cadastro! Erro: ",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        });
+    }
+}
+
 function cadastrar(req, res) {
     var tipo = req.body.tipoServer; 
     var comentario = req.body.comentarioServer; 
@@ -53,5 +71,6 @@ function cadastrar(req, res) {
 module.exports = {
     listar,
     cadastrar,
-    testar
+    testar,
+    listarCurtidos
 }

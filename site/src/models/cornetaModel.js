@@ -4,13 +4,23 @@ var database = require("../database/config");
 function listar() {
     console.log("Acessando corneta model");
     var instrucao = `
-        SELECT corneta.*, nomeUsuario, COUNT(idCurtida) as curtidas FROM corneta 
-        left JOIN curtidaCorneta on corneta.idCorneta = fkCorneta 
+        SELECT corneta.*, nomeUsuario, COUNT(idCurtida) as curtidas
+        FROM corneta
+        left JOIN curtidaCorneta on corneta.idCorneta = fkCorneta
             INNER JOIN usuario ON corneta.fkUsuario = usuario.idUsuario
-
-            GROUP BY corneta.idCorneta, 
-            corneta.tipoCorneta, corneta.comentarioCorneta, corneta.dataCorneta, corneta.competicao, fkJogador, fkUsuario
+            GROUP BY corneta.idCorneta,
+            corneta.tipoCorneta, corneta.comentarioCorneta,
+            corneta.dataCorneta, corneta.competicao, fkJogador, fkUsuario
             ORDER BY dataCorneta DESC;
+    `
+    console.log("Executando a instrução sql: "+instrucao);
+    return database.executar(instrucao);
+}
+
+function listarCurtidos(usuario) {
+    console.log("Acessando corneta model");
+    var instrucao = `
+        SELECT fkCorneta FROM curtidaCorneta WHERE fkUsuario = ${usuario}
     `
     console.log("Executando a instrução sql: "+instrucao);
     return database.executar(instrucao);
@@ -27,5 +37,6 @@ function cadastrar(tipo, comentario, competicao, jogador, usuario){
 }
 module.exports={
     listar, 
-    cadastrar
+    cadastrar,
+    listarCurtidos
 }
