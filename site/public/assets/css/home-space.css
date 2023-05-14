@@ -35,10 +35,140 @@
 }
 .infos{
     display: flex;
-    width: 25%;
+    flex-direction: column;
+    width: 26%;
     overflow-y: auto;
+    align-items: center;
+    padding-top: 10px;
+    gap: 15px;
+}
+.perfil{
+    width: 200px;
+    height: 50px;
+    background-color: #212121;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    gap: 10px;
+}
+.escudo-perfil{
+    width: 33px;
+    height: 33px;
 }
 
+.lista-jogadores{
+    width: 350px;
+    height: 230px;
+   
+    display: flex;
+    flex-direction: column;
+}
+.titulo-lista{
+    background-color: #121212;
+    display: flex;
+    border: 1px solid #F55959;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom: none;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+    color: #F55959;
+    font-size: 18px;
+}
+#lista{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #F55959;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top: none;
+    background-color: #212121;
+    width: 100%;
+    height: 80%;
+}
+.item-lista{
+    height: 33.3%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+   
+   
+}
+.item-lista:nth-child(2){
+    border: 0.9px solid #676767;
+    border-left: none;
+    border-right: none;
+}
+/*  */
+.top-corneta{
+    width: 350px;
+    height: 470px;
+    display: flex;
+    flex-direction: column;
+}
+.top-corneta > .titulo-lista{
+    height: 10%;
+}
+#top_corneta_corpo{
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #F55959;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top: none;
+    background-color: #212121;
+    width: 100%;
+    height: 90%;
+}
+.usuario-analise-top{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 60%;
+    padding: 15px;
+}
+.usuario-top{
+    color: #F55959;
+}
+.info-foto-corneta-top{
+    height: 40%;
+    align-items: flex-end;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.info-corneta-top{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    justify-content: space-between;
+}
+.info-corneta-top > .tipo-corneta{
+    font-size: 15px;
+}
+.curtir-top{
+    display: flex;
+    align-items: center;
+}
+.foto-corneta-top{
+    width: 50%;
+    justify-content: flex-end;
+    height: 100%;
+}
+.foto-corneta-top > .fotoJogador{
+    float: right;
+    width: 70%;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 30px;
+}
+
+/*  */
 .corneta{
     width: 565px;
     height: 240px;
@@ -223,5 +353,6 @@
         background-image: url('../img/jogadores/cebola.png'); 
     }
 
+    
 
  

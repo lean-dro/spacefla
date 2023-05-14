@@ -125,11 +125,53 @@
 
       <div id="feed" class="feed"></div>
 
-      <div class="infos"></div>
+      <div class="infos">
+        <div class="perfil">
+          <img class="escudo-perfil" src="../assets/icon/ESCUDO.svg" alt="">
+          <p id="usuario_perfil"></p>
+        </div>
+        
+        <div class="lista-jogadores">
+          <div class="titulo-lista">Top 3 Jogadores mais comentados</div>
+          <div id="lista">
+            <div class="item-lista">ARRASCA</div>
+            <div class="item-lista">ARRASCA</div>
+            <div class="item-lista">ARRASCA</div>
+          </div>
+        </div>
+
+        <div class="top-corneta">
+          <div class="titulo-lista">Corneta mais curtida</div>
+          <div id="top_corneta_corpo">
+            <div class="usuario-analise-top">
+              <div class="usuario-top">@teste</div>
+              <div class="analise-top">o senhor gabriel barbosa vem apresentando um futebol lindo de se ver</div>
+            </div>
+            <div class="info-foto-corneta-top">
+              <div class="info-corneta-top">
+                <img class='icon-competicao' src="../assets/img/competicao/Brasileiro.png" alt="">
+                <p class="tipo-corneta Positiva">Jogando bem</p>
+
+                <div class="curtir-top">
+                  <div class="botao-efeito">
+                    <div onclick="curtir(this, 1)" id="botao${corneta}" class="botao curtir"></div>
+                  </div>
+                  <span id='span_curtidas${corneta}'>1</span>
+                </div>
+              </div>
+              <div class="foto-corneta-top">
+                <div class="fotoJogador j20"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </body>
 </html>
 <script>
+  usuario_perfil.innerHTML = sessionStorage.NOME_USUARIO
   var ultimoJogador="";
   var cornetas = [];
   var cornetasCurtidas = []
