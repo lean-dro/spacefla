@@ -220,6 +220,7 @@ function gerarTopCorneta() {
   `
 }
 function buscarTopJogadores() {
+  lista.innerHTML=""
     fetch("/jogadores/listar-top",{
       method: "get",
       headers: {
@@ -406,7 +407,7 @@ function buscarTopJogadores() {
           obterCornetas()
           gerarCornetas()
           buscarTopJogadores()
-              
+          toggleModal()
         }, 500);
       }else{
         alert("ero")
