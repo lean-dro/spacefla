@@ -16,7 +16,20 @@ function listar() {
     console.log("Executando a instrução sql: "+instrucao);
     return database.executar(instrucao);
 }
-
+function listarTop() {
+    var instrucao = `
+        SELECT corneta.*, nomeUsuario, COUNT(idCurtida) as curtidas
+        FROM corneta
+        left JOIN curtidaCorneta on corneta.idCorneta = fkCorneta
+            INNER JOIN usuario ON corneta.fkUsuario = usuario.idUsuario
+            GROUP BY corneta.idCorneta,
+            corneta.tipoCorneta, corneta.comentarioCorneta,
+            corneta.dataCorneta, corneta.competicao, fkJogador, fkUsuario
+            ORDER BY curtidas DESC LIMIT 1;
+    `
+    console.log("Executando a instrução sql: "+instrucao);
+    return database.executar(instrucao);
+}
 function listarCurtidos(usuario) {
     console.log("Acessando corneta model");
     var instrucao = `
@@ -38,5 +51,6 @@ function cadastrar(tipo, comentario, competicao, jogador, usuario){
 module.exports={
     listar, 
     cadastrar,
-    listarCurtidos
+    listarCurtidos,
+    listarTop
 }

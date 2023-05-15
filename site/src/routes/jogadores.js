@@ -11,5 +11,8 @@ router.get("/", function (req, res) {
 router.get("/listar", function (req, res) {
     jogadorController.listar(req, res);
 });
+router.get("/listar-top", function (req, res) {
+    jogadorController.listarTop(req, res);
+});
 
 module.exports = router;
