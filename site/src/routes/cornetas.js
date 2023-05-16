@@ -19,6 +19,10 @@ router.post("/listarCurtidos", function (req, res) {
     cornetaController.listarCurtidos(req, res);
 });
 
+router.get("/listarPorcentagens", function (req, res) {
+    cornetaController.listarPorcentagens(req, res);
+});
+
 
 router.post("/cadastrar", function (req, res) {
     cornetaController.cadastrar(req, res);

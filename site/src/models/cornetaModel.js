@@ -48,9 +48,34 @@ function cadastrar(tipo, comentario, competicao, jogador, usuario){
     console.log("Executando a instrução sql: "+instrucao);
     return database.executar(instrucao);
 }
+
+function listarPorcentagemBem() {
+    var instrucao = `
+    SELECT 
+    fkJogador, ROUND(((COUNT(idCorneta)*100)/(SELECT COUNT(idCorneta) FROM corneta WHERE tipoCorneta = "Jogando bem")),2) as porcentagemBem FROM corneta
+    WHERE tipoCorneta = "Jogando bem"
+    GROUP BY fkJogador
+    ORDER BY porcentagemBem DESC;
+    `
+    console.log("Executando a instrução sql: "+instrucao);
+    return database.executar(instrucao);
+}
+function listarPorcentagemMal() {
+    var instrucao = `
+    SELECT 
+    fkJogador, ROUND(((COUNT(idCorneta)*100)/(SELECT COUNT(idCorneta) FROM corneta WHERE tipoCorneta = "Jogando mal")), 2) as porcentagemMal FROM corneta
+    WHERE tipoCorneta = "Jogando mal"
+    GROUP BY fkJogador
+    ORDER BY porcentagemMal DESC;
+    `
+    console.log("Executando a instrução sql: "+instrucao);
+    return database.executar(instrucao);
+}
 module.exports={
     listar, 
     cadastrar,
     listarCurtidos,
-    listarTop
+    listarTop,
+    listarPorcentagemBem,
+    listarPorcentagemMal
 }

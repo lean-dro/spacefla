@@ -1,4 +1,8 @@
 var cornetaModel = require("../models/cornetaModel");
+var porcentagens = {
+    porcentagemBem: [],
+    porcentagemMal: []
+}
 function testar(){
     console.log("Rota das cornetas")
 }
@@ -52,7 +56,17 @@ function listarCurtidos(req,res) {
         });
     }
 }
+function listarPorcentagens(req, res) {
 
+    cornetaModel.listarPorcentagemBem().then(function(resultado) {
+        porcentagens.porcentagemBem.push(resultado)
+    })
+    cornetaModel.listarPorcentagemMal().then(function(resultado) {
+        porcentagens.porcentagemMal.push(resultado)
+    })
+    
+    res.status(200).json(porcentagens)
+}
 function cadastrar(req, res) {
     var tipo = req.body.tipoServer; 
     var comentario = req.body.comentarioServer; 
@@ -89,5 +103,6 @@ module.exports = {
     cadastrar,
     testar,
     listarCurtidos,
-    listarTop
+    listarTop,
+    listarPorcentagens
 }
