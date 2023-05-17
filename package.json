@@ -6,5 +6,8 @@
     "start": "cd site && nodemon node app.js",
     "dev": "cd site && npm run dev",
     "postinstall": "cd site && npm install"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.22"
   }
 }

@@ -367,6 +367,7 @@ function buscarTopJogadores() {
   }
 
   function buscarJogadores() {
+    select_jogador.innerHTML = '';
     fetch("/jogadores/listar", {
       method: "get",
       headers: {
