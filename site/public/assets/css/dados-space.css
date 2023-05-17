@@ -1,0 +1,173 @@
+#conteudo-dados{
+    width: 73%;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.kpis{
+    height: 280px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    
+}
+.kpi{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+   
+    font-weight: 700;
+}
+
+.positiva{
+    background-color: #5DD299;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.negativa{
+    background-color: #F3B72F;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.textos-kpi{
+    padding-left: 20px;
+    width: 60%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+.texto-kpi{
+    width: 50%;
+    font-size: 22px;
+    
+    
+}
+.porcentagem{
+    width: 50%;
+    font-size: 60px;
+    text-align: end;
+}
+.foto{
+    width: 40%;
+    display: flex;
+    align-items: flex-end;
+   
+}
+.fotoJogadorKpi{
+    background-size: cover;
+    width: 200px;
+    float: right;
+    height: 250px;
+}
+.competicao-grafico{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+.competicao{
+    width: 40%;
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    
+}
+.grafico{
+    width: 60%;
+}
+.texto-competicao{
+    font-weight: 700;
+    font-size: 20px;
+}
+.foto-competicao{
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+}
+.Libertadores{
+    background-image: url('../img/competicao/Libertadores.png');
+}
+.Copa-do-Brasil{
+    background-image: url('../img/competicao/Copa\ do\ brasil.png');
+}
+
+.fotoJogadorKpi.j1{
+    background-image: url('../img/jogadores/santos.png'); 
+    }      
+    .fotoJogadorKpi.j2{
+        background-image: url('../img/jogadores/hugo.png'); 
+    }
+    .fotoJogadorKpi.j3{
+        background-image: url('../img/jogadores/matheus.png'); 
+    }
+    .fotoJogadorKpi.j4{
+        background-image: url('../img/jogadores/rodrigo.png'); 
+    }
+    .fotoJogadorKpi.j5{
+        background-image: url('../img/jogadores/leo.png'); 
+    }
+    .fotoJogadorKpi.j6{
+        background-image: url('../img/jogadores/david.png'); 
+    }
+    .fotoJogadorKpi.j7{
+        background-image: url('../img/jogadores/fabricio.png'); 
+    }
+    .fotoJogadorKpi.j8{
+        background-image: url('../img/jogadores/pablo.png'); 
+    }
+    .fotoJogadorKpi.j9{
+        background-image: url('../img/jogadores/matheuszinho.png'); 
+    }
+    .fotoJogadorKpi.j10{
+        background-image: url('../img/jogadores/varela.png'); 
+    }
+    .fotoJogadorKpi.j11{
+        background-image: url('../img/jogadores/filipe.png'); 
+    }
+    .fotoJogadorKpi.j12{
+        background-image: url('../img/jogadores/ayrton.png'); 
+    }
+    .fotoJogadorKpi.j13{
+        background-image: url('../img/jogadores/vidal.png'); 
+    }
+    .fotoJogadorKpi.j14{
+        background-image: url('../img/jogadores/thiago.png'); 
+    }
+    .fotoJogadorKpi.j15{
+        background-image: url('../img/jogadores/pulgar.png'); 
+    }
+    .fotoJogadorKpi.j16{
+        background-image: url('../img/jogadores/gerson.png'); 
+    }
+    .fotoJogadorKpi.j17{
+        background-image: url('../img/jogadores/ribeiro.png'); 
+    }
+    .fotoJogadorKpi.j18{
+        background-image: url('../img/jogadores/arrasca.png'); 
+    }
+    .fotoJogadorKpi.j19{
+        background-image: url('../img/jogadores/victor.png'); 
+    }
+    .fotoJogadorKpi.j20{
+        background-image: url('../img/jogadores/franca.png'); 
+    }
+    .fotoJogadorKpi.j21{
+        background-image: url('../img/jogadores/gabi.png'); 
+    }
+    .fotoJogadorKpi.j22{
+        background-image: url('../img/jogadores/bruno.png'); 
+    }
+    .fotoJogadorKpi.j23{
+        background-image: url('../img/jogadores/pedro.png'); 
+    }
+    .fotoJogadorKpi.j24{
+        background-image: url('../img/jogadores/marinho.png'); 
+    }
+    .fotoJogadorKpi.j25{
+        background-image: url('../img/jogadores/cebola.png'); 
+    }

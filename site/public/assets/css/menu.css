@@ -25,13 +25,27 @@
     flex-direction: column;
     gap: 60px;
 }
-.item-tab{
+a{
+    color: white;
+    text-decoration: none;
+}
+.item-tab {
     cursor: pointer;
     display: flex;
     padding: 10px;
     align-items: center;
     justify-content: start;
     gap: 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: ease-out 0.3s;
+}
+
+.item-tab:hover{
+    background-color: #f5595981;
+  
+    transition: ease 0.3s;
 }
 .tab-icon{
     width: 30px;
@@ -50,4 +64,8 @@
 }
 .tab-sair{
     
+}
+#conteudo{
+    display: flex;
+    height: 100vh;
 }

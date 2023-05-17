@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link
+  rel="shortcut icon"
+  href="../assets/icon/LOGO.svg"
+  type="image/x-icon"
+/>
+    <script
+    src="https://kit.fontawesome.com/ac1eabd3cd.js"
+    crossorigin="anonymous"
+  ></script> 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="../assets/css/reset.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/menu.css" />
+  <link rel="stylesheet" href="../assets/css/modal.css" />
+  <link rel="stylesheet" href="../assets/css/dados-space.css" />
+  <script src="../assets/js/funcoes.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spacefla | dados</title>
+</head>
+<body>
+    <div class="conteudo">
+        <div class="menu">
+            <div class="escopo-menu">
+              <div class="logo-menu">
+                <img src="../assets/icon/LOGO.svg" alt="" />
+              </div>
+              <div class="tabs">
+                <a href="home.html">
+                <div class="item-tab">
+                  <svg
+                    class="tab-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512"
+                  >
+                    <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                      d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
+                    />
+                  </svg>
+    
+                  <span>feed</span>
+                </div>
+              </a>
+              <a href="dados.html">
+                <div class="item-tab">
+                  <svg
+                    class="tab-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                  >
+                    <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                      d="M32 32c17.7 0 32 14.3 32 32V400c0 8.8 7.2 16 16 16H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-44.2 0-80-35.8-80-80V64C0 46.3 14.3 32 32 32zM160 224c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32s-32-14.3-32-32V256c0-17.7 14.3-32 32-32zm128-64V320c0 17.7-14.3 32-32 32s-32-14.3-32-32V160c0-17.7 14.3-32 32-32s32 14.3 32 32zm64 32c17.7 0 32 14.3 32 32v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V224c0-17.7 14.3-32 32-32zM480 96V320c0 17.7-14.3 32-32 32s-32-14.3-32-32V96c0-17.7 14.3-32 32-32s32 14.3 32 32z"
+                    />
+                  </svg>
+    
+                  <span> dados </span>
+                </div>
+              </a>
+                <div onclick="toggleModal()" class="item-tab botao-corneta">
+                  <img
+                    src="../assets/icon/corneta.svg"
+                    class="corneta-icon"
+                    alt=""
+                  />
+                  <span> cornetar </span>
+                </div>
+              </div>
+              <div class="tab-sair">
+                <div onclick="sair()" class="item-tab">
+                  <svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>  
+                  <span>sair</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="conteudo-dados">
+            <div class="kpis">
+              <div class="kpi positiva">
+                <div class="textos-kpi">
+                  <p class="texto-kpi">Jogador com mais avaliações positivas</p>
+                  <span class="porcentagem">10%</span>
+                </div>
+                <div class="foto">
+                  <div class="fotoJogadorKpi j1"></div>
+                </div>
+              </div>
+              <div class="kpi negativa">
+                <div class="textos-kpi">
+                  <p class="texto-kpi">Jogador com mais avaliações negativas</p>
+                  <span class="porcentagem">10%</span>
+                </div>
+                <div class="foto">
+                  <div class="fotoJogadorKpi j10"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="competicao-grafico">
+
+              <div class="competicao">
+                <div class="foto-competicao Copa-do-Brasil"></div>
+                <span class="texto-competicao">Competição com mais cornetas</span>
+              </div>
+
+              <div class="grafico">
+                <canvas id="myChart"></canvas>
+              </div>
+
+            </div>
+              
+          </div>
+    </div>
+</body>
+</html>
+<script>
+  const ctx = document.getElementById('myChart');
+
+  var teste = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Goleiro', 'Atacante', 'Lateral direito', 'Lateral esquerdo', 'Meia', 'Zagueiro'],
+      datasets: [{
+        label: 'Cornetas por posição',
+        data: [0,0,0,0,0,0],
+        borderWidth: 1,
+        backgroundColor: '#F55959',
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+  
+</script>
