@@ -71,11 +71,24 @@ function listarPorcentagemMal() {
     console.log("Executando a instrução sql: "+instrucao);
     return database.executar(instrucao);
 }
+function listarQtdPosicao() {
+    var instrucao = `
+    SELECT COUNT(idCorneta) as contagem, posicaoJogador as posicao FROM corneta RIGHT JOIN jogador on fkJogador = idJogador GROUP BY posicaoJogador;`
+    return database.executar(instrucao)
+}
+function obterMaiorCompeticao() {
+    var instrucao = `
+    SELECT COUNT(idCorneta) as contagem, competicao FROM corneta GROUP by competicao ORDER BY contagem DESC limit 1;
+    `
+    return database.executar(instrucao)
+}
 module.exports={
     listar, 
+    listarQtdPosicao,
     cadastrar,
     listarCurtidos,
     listarTop,
     listarPorcentagemBem,
-    listarPorcentagemMal
+    listarPorcentagemMal,
+    obterMaiorCompeticao
 }

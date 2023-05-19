@@ -23,7 +23,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>spacefla | dados</title>
 </head>
-<body>
+<body onload="validarSessao()">
+  <div id="fundo_modal" class="fundo-modal">
+    <div class="modal">
+      <div class="modal-escopo">
+        <i
+          onclick="toggleModal(this)"
+          class="fa-solid fa-xmark botao-close-modal"
+        ></i>
+        <h1 class="titulo-modal">Faça sua corneta</h1>
+        <div class="selects">
+          <select class="select-secundario" name="" id="select_atuacao">
+            <option value="0">Atuação</option>
+            <option style="color: #5dd299" value="Jogando bem">Jogando bem</option>
+            <option style="color: #f3b72f" value="Jogando mal">Jogando mal</option>
+          </select>
+          <select class="select-secundario" name="" id="select_competicao">
+            <option value="0">Competição</option>
+            <option value="Brasileiro">Brasileiro</option>
+            <option value="Copa do Brasil">Copa do Brasil</option>
+            <option value="Libertadores">Libertadores</option>
+          </select>
+        </div>
+        <div class="analise">
+          <textarea
+            wrap="hard"
+            cols="10"
+            rows="10"
+            name=""
+            id="textarea_analise"
+            placeholder="Faça sua análise..."
+          ></textarea>
+        </div>
+        <span id="span_aviso"></span>
+      </div>
+      <div class="modal-foto-botao">
+        <div id="foto_modal" class="fotoJogador-modal "></div>
+        <select onchange="atualizarJogador()" id="select_jogador"  class="select-jogador" name="" id="">
+          <option value="0">Escolha um Jogador</option>
+         
+        </select>
+        <div class="botao-modal" onclick="validarCadastro()">
+          <img class="corneta-icon" src="../assets/icon/corneta.svg" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
     <div class="conteudo">
         <div class="menu">
             <div class="escopo-menu">
@@ -86,28 +131,27 @@
               <div class="kpi positiva">
                 <div class="textos-kpi">
                   <p class="texto-kpi">Jogador com mais avaliações positivas</p>
-                  <span class="porcentagem">10%</span>
+                  <span id="porcentagemPositiva" class="porcentagem"></span>
                 </div>
-                <div class="foto">
-                  <div class="fotoJogadorKpi j1"></div>
+                <div  id="fotoPositiva" class="foto">
+                 
                 </div>
               </div>
               <div class="kpi negativa">
                 <div class="textos-kpi">
                   <p class="texto-kpi">Jogador com mais avaliações negativas</p>
-                  <span class="porcentagem">10%</span>
+                  <span id="porcentagemNegativa" class="porcentagem"></span>
                 </div>
-                <div class="foto">
-                  <div class="fotoJogadorKpi j10"></div>
+                <div id="fotoNegativa" class="foto">
+                 
                 </div>
               </div>
             </div>
 
             <div class="competicao-grafico">
 
-              <div class="competicao">
-                <div class="foto-competicao Copa-do-Brasil"></div>
-                <span class="texto-competicao">Competição com mais cornetas</span>
+              <div id="competicao" class="competicao">
+              
               </div>
 
               <div class="grafico">
@@ -122,25 +166,218 @@
 </html>
 <script>
   const ctx = document.getElementById('myChart');
-
-  var teste = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Goleiro', 'Atacante', 'Lateral direito', 'Lateral esquerdo', 'Meia', 'Zagueiro'],
+  var foto = document.getElementById("foto_modal").classList;
+       
+  var maior = 0
+  var menor = 0
+  var ultimoJogador = ""
+  var dados = { 
+      labels: [],
       datasets: [{
         label: 'Cornetas por posição',
-        data: [0,0,0,0,0,0],
-        borderWidth: 1,
-        backgroundColor: '#F55959',
+        data: [],
+        borderWidth: 3,
+        borderColor: '#F55959',
       }]
-    },
+  }
+
+  var atualizar = setInterval(() => {
+    buscarPorcentagens()
+    buscarQtdPosicao()
+  }, (6000*10));
+  buscarPorcentagens()
+  async function buscarPorcentagens() {
+   await  fetch("/cornetas/listarPorcentagens",{
+      method: "get",
+      headers:{
+        "Content-type": "application/json"
+      }
+    }).then(function(resposta) {
+      if(resposta.ok){
+        
+        resposta.json().then((json)=>{
+          console.log(json)
+          fotoPositiva.innerHTML =  `<div  class="fotoJogadorKpi j${json.porcentagemBem[0][0].fkJogador}"></div>`
+          porcentagemPositiva.innerHTML = `${json.porcentagemBem[0][0].porcentagemBem}%`
+          fotoNegativa.innerHTML = `<div  class="fotoJogadorKpi j${json.porcentagemMal[0][0].fkJogador}"></div>`
+          porcentagemNegativa.innerHTML = `${json.porcentagemMal[0][0].porcentagemMal}%`
+        })
+      }
+    })
+  }
+  buscarQtdPosicao()
+  function buscarQtdPosicao() {
+    fetch("/cornetas/listarQtdPosicao",{
+      method: "get",
+      headers:{
+        "Content-type":"application/json"
+      }
+    }).then(function(resultado) {
+      if(resultado.ok){
+        resultado.json().then((json)=>{
+          console.log(json)
+            json.forEach(chave => {
+             dados.labels.push(chave.posicao)
+             dados.datasets[0].data.push(chave.contagem)
+            });
+            gerarGrafico()
+            maiorMenorValor
+        })
+      }
+    })
+  }
+
+  function maiorMenorValor() {
+     maior = dados.datasets[0].data[0]
+     menor = dados.datasets[0].data[0]
+    for (var i = 0; i < dados.datasets[0].data.length; i++) {
+      if(maior < dados.datasets[0].data[i]){
+        maior = dados.datasets[0].data[i]
+      }
+      if(menor > dados.datasets[0].data[i]){
+        menor = dados.datasets[0].data[i]
+      }
+      
+    }
+  }
+
+  function gerarGrafico() {
+    var grafico = new Chart(ctx, {
+    type: 'bar',
+    data:dados,
     options: {
       scales: {
         y: {
-          beginAtZero: true
+          ticks:{
+            stepSize: 1
+          },
+          beginAtZero: true,
+          suggestedMin: menor,
+          suggestedMax: maior
         }
       }
     }
   });
+  return false;
+  }
+ 
+  function toggleModal() {
+    fundo_modal.classList.toggle("show");
+    select_atuacao.value = 0;
+    select_competicao.value = 0;
+    select_jogador.value = 0;
+    textarea_analise.value = "";
+    if(ultimoJogador != ""){
+      foto.remove(ultimoJogador)
+    }
+   
+    buscarJogadores();
+  }
+  function atualizarJogador() {
+   
+   var idJogador = select_jogador.value;
+   var classe
+   if(ultimoJogador == ""){
+      classe = "j"+idJogador;
+      foto.add(classe)
+      ultimoJogador = classe;
+   }else{
+     foto.remove(ultimoJogador);
+     classe = "j"+idJogador;
+     foto.add(classe)
+     ultimoJogador = classe;
+   }
   
+   
+ }
+  function buscarJogadores() {
+    select_jogador.innerHTML = ' <option value="0">Escolha um Jogador</option>';
+    fetch("/jogadores/listar", {
+      method: "get",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then((json) =>{
+          for (var contadorJogadores = 0; contadorJogadores < json.length; contadorJogadores++) {
+            select_jogador.innerHTML += `<option value='${json[contadorJogadores].idJogador}'>${json[contadorJogadores].nomeJogador}</option>`
+          }
+        })
+      }
+    });
+  }
+
+
+  function validarCadastro() {
+    var atuacao = select_atuacao.value;
+    var competicao = select_competicao.value;
+    var jogador =  select_jogador.value;
+    var analise = textarea_analise.value;
+
+    var entradasInvalidas = 
+    (atuacao == 0) ||
+    (competicao == 0) ||
+    (jogador == 0) ||
+    (analise.length == 0)
+    
+    if(entradasInvalidas){
+      if(atuacao == 0){
+        span_aviso.innerHTML = "Selecione a atuação!"
+      }else if(competicao == 0){
+        span_aviso.innerHTML = "Selecione a competição!"
+      }else if(jogador == 0){
+        span_aviso.innerHTML = "Selecione um jogador!"
+      }else{
+        span_aviso.innerHTML = "Faça uma análise!"
+      }
+    }else{
+      cadastrarCorneta(atuacao, competicao, jogador, analise)
+    }
+
+  }
+  function cadastrarCorneta(tipo, competicao, jogador, analise) {
+    fetch('/cornetas/cadastrar',{
+      method: "post",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        tipoServer: tipo,
+        competicaoServer: competicao,
+        jogadorServer: jogador,
+        comentarioServer: analise,
+        usuarioServer: sessionStorage.ID_USUARIO
+      }),
+    }).then(function(resposta) {
+      if(resposta.ok){
+        setTimeout(() => {
+          window.location.href = 'home.html'
+        }, 500);
+      }else{
+        alert("ero")
+      }
+    })
+  }
+obterMaiorCompeticao()
+  function obterMaiorCompeticao() {
+    fetch('/cornetas/maiorCompeticao',{
+      method: "get",
+      headers:{
+        "Content-type": "application/json",
+      }
+    }).then(function (resposta) {
+      if(resposta.ok){
+        resposta.json().then((json)=>{
+          console.log(json)
+          var nomeCompeticao = (json[0].competicao).replace(" ", "")
+          competicao.innerHTML = `
+                <div class="foto-competicao ${nomeCompeticao}"></div>
+                <span class="texto-competicao">Competição com mais cornetas</span>
+          `
+        })
+      }
+    })
+  }
+
 </script>

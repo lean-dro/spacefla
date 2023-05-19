@@ -22,7 +22,12 @@ router.post("/listarCurtidos", function (req, res) {
 router.get("/listarPorcentagens", function (req, res) {
     cornetaController.listarPorcentagens(req, res);
 });
-
+router.get("/listarQtdPosicao", function (req,res) {
+    cornetaController.listarQtdPosicao(req,res)
+})
+router.get("/maiorCompeticao", function (req,res) {
+    cornetaController.obterMaiorCompeticao(req,res)
+})
 
 router.post("/cadastrar", function (req, res) {
     cornetaController.cadastrar(req, res);

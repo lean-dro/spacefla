@@ -56,6 +56,25 @@ function listarCurtidos(req,res) {
         });
     }
 }
+function obterMaiorCompeticao(req,res) {
+    cornetaModel.obterMaiorCompeticao().then(function(resultado) {
+        res.status(200).json(resultado)
+    })
+}
+
+function listarQtdPosicao(req,res) {
+    cornetaModel.listarQtdPosicao().then(function(resultado) {
+        res.status(200).json(resultado)
+    }).catch(function(erro) {
+        console.log(erro);
+        console.log(
+            "\nHouve um erro ao realizar o cadastro! Erro: ",
+            erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function listarPorcentagens(req, res) {
 
     cornetaModel.listarPorcentagemBem().then(function(resultado) {
@@ -66,6 +85,8 @@ function listarPorcentagens(req, res) {
     })
     
     res.status(200).json(porcentagens)
+    porcentagens.porcentagemBem = []
+    porcentagens.porcentagemMal = []
 }
 function cadastrar(req, res) {
     var tipo = req.body.tipoServer; 
@@ -104,5 +125,7 @@ module.exports = {
     testar,
     listarCurtidos,
     listarTop,
-    listarPorcentagens
+    listarPorcentagens,
+    listarQtdPosicao,
+    obterMaiorCompeticao
 }

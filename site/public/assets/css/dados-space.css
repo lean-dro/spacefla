@@ -45,7 +45,7 @@
 }
 .porcentagem{
     width: 50%;
-    font-size: 60px;
+    font-size: 35px;
     text-align: end;
 }
 .foto{
@@ -92,10 +92,12 @@
 .Libertadores{
     background-image: url('../img/competicao/Libertadores.png');
 }
-.Copa-do-Brasil{
+.CopadoBrasil{
     background-image: url('../img/competicao/Copa\ do\ brasil.png');
 }
-
+.Brasileiro{
+    background-image: url('../img/competicao/Brasileiro.png');
+}
 .fotoJogadorKpi.j1{
     background-image: url('../img/jogadores/santos.png'); 
     }      

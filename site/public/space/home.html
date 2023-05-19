@@ -205,7 +205,7 @@ function gerarTopCorneta() {
                   classeCurtida = "curtir"
                 }
               }
-
+if(cornetaTop.curtidas > 0){
   top_corneta_corpo.innerHTML = `
   <div class="usuario-analise-top">
               <div class="usuario-top">@${cornetaTop.nomeUsuario}</div>
@@ -231,6 +231,10 @@ function gerarTopCorneta() {
             </div>
   
   `
+}else{
+  top_corneta_corpo.innerHTML = ``
+}
+ 
 }
 function buscarTopJogadores() {
   lista.innerHTML=""
@@ -367,7 +371,7 @@ function buscarTopJogadores() {
   }
 
   function buscarJogadores() {
-    select_jogador.innerHTML = '';
+    select_jogador.innerHTML = ' <option value="0">Escolha um Jogador</option>';
     fetch("/jogadores/listar", {
       method: "get",
       headers: {
@@ -438,8 +442,6 @@ function buscarTopJogadores() {
     })
   }
   
-
-
   function gerarCornetas() {
     
     feed.innerHTML ="";
@@ -449,7 +451,7 @@ function buscarTopJogadores() {
               var comentario = cornetas[contador].comentarioCorneta;
               var idJogador = cornetas[contador].fkJogador;
               var usuario = cornetas[contador].nomeUsuario;
-              var competicao = cornetas[contador].competicao;
+              var competicao = (cornetas[contador].competicao).replace(" ", "").replace(" ", "");
               var tipo = cornetas[contador].tipoCorneta;
               var classeTipo;
               var curtidas = cornetas[contador].curtidas 
@@ -467,6 +469,7 @@ function buscarTopJogadores() {
                   classeCurtida = "curtir"
                 }
               }
+             
               feed.innerHTML += `
             
                     <div class="corneta">
