@@ -23,7 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>spacefla | dados</title>
 </head>
-<body onload="validarSessao()">
+<body onload="validarSessao(), buscarPorcentagens(), buscarQtdPosicao()">
   <div id="fundo_modal" class="fundo-modal">
     <div class="modal">
       <div class="modal-escopo">
@@ -185,7 +185,7 @@
     buscarPorcentagens()
     buscarQtdPosicao()
   }, (6000*10));
-  buscarPorcentagens()
+
   async function buscarPorcentagens() {
    await  fetch("/cornetas/listarPorcentagens",{
       method: "get",
