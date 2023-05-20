@@ -75,12 +75,12 @@ function listarQtdPosicao(req,res) {
     });
 }
 
-function listarPorcentagens(req, res) {
+async function listarPorcentagens(req, res) {
 
-    cornetaModel.listarPorcentagemBem().then(function(resultado) {
+    await cornetaModel.listarPorcentagemBem().then(function(resultado) {
         porcentagens.porcentagemBem.push(resultado)
     })
-    cornetaModel.listarPorcentagemMal().then(function(resultado) {
+    await cornetaModel.listarPorcentagemMal().then(function(resultado) {
         porcentagens.porcentagemMal.push(resultado)
     })
     

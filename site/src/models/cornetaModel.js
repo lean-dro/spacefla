@@ -52,7 +52,7 @@ function cadastrar(tipo, comentario, competicao, jogador, usuario){
 function listarPorcentagemBem() {
     var instrucao = `
     SELECT 
-    fkJogador, ROUND(((COUNT(idCorneta)*100)/(SELECT COUNT(idCorneta) FROM corneta WHERE tipoCorneta = "Jogando bem")),2) as porcentagemBem FROM corneta
+    fkJogador, ROUND(((COUNT(idCorneta)*100)/(SELECT COUNT(idCorneta) FROM corneta WHERE tipoCorneta = "Jogando bem")),0) as porcentagemBem FROM corneta
     WHERE tipoCorneta = "Jogando bem"
     GROUP BY fkJogador
     ORDER BY porcentagemBem DESC;
@@ -63,7 +63,7 @@ function listarPorcentagemBem() {
 function listarPorcentagemMal() {
     var instrucao = `
     SELECT 
-    fkJogador, ROUND(((COUNT(idCorneta)*100)/(SELECT COUNT(idCorneta) FROM corneta WHERE tipoCorneta = "Jogando mal")), 2) as porcentagemMal FROM corneta
+    fkJogador, ROUND(((COUNT(idCorneta)*100)/(SELECT COUNT(idCorneta) FROM corneta WHERE tipoCorneta = "Jogando mal")), 0) as porcentagemMal FROM corneta
     WHERE tipoCorneta = "Jogando mal"
     GROUP BY fkJogador
     ORDER BY porcentagemMal DESC;
