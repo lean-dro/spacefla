@@ -15,7 +15,7 @@ function listar() {
     `
     console.log("Executando a instrução sql: "+instrucao);
     return database.executar(instrucao);
-}
+} 
 function listarTop() {
     var instrucao = `
         SELECT corneta.*, nomeUsuario, COUNT(idCurtida) as curtidas

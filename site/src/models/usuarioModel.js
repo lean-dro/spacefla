@@ -30,9 +30,13 @@ function cadastrar(nome, email, senha) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
-
+function verificarEmail(email) {
+    var instrucao = `SELECT emailUsuario FROM usuario where emailUsuario = '${email}';`
+    return database.executar(instrucao)
+}
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    verificarEmail
 };

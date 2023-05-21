@@ -29,6 +29,7 @@
     background-color: #F3B72F;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
+    
 }
 .textos-kpi{
     padding-left: 20px;
@@ -40,7 +41,7 @@
 .texto-kpi{
     width: 50%;
     font-size: 22px;
-    
+    text-align: center;
     
 }
 .porcentagem{

@@ -44,7 +44,9 @@ CREATE TABLE curtidaCorneta(
   constraint fkCorneta foreign key(fkCorneta) references corneta(idCorneta),
   constraint pkCurtida primary key(idCurtida, fkUsuario, fkCorneta)
 );
----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 INSERT INTO jogador(numeroJogador, posicaoJogador, nomeJogador,fotoJogador)
 VALUES
 (1, 'Goleiro', 'Santos', 'santos.png'),

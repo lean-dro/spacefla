@@ -177,11 +177,14 @@
         label: 'Cornetas por posição',
         data: [],
         borderWidth: 3,
-        borderColor: '#F55959',
+        color: 'white',
+        borderRadius: 8,
+        backgroundColor: 'rgb(245, 89, 89, 0.5)'
       }]
   }
 
   var atualizar = setInterval(() => {
+    ctx.innerHTML = ""
     buscarPorcentagens()
     buscarQtdPosicao()
   }, (6000*10));
@@ -205,7 +208,7 @@
       }
     })
   }
-  buscarQtdPosicao()
+  
   function buscarQtdPosicao() {
     fetch("/cornetas/listarQtdPosicao",{
       method: "get",
@@ -221,7 +224,7 @@
              dados.datasets[0].data.push(chave.contagem)
             });
             gerarGrafico()
-            maiorMenorValor
+            maiorMenorValor()
         })
       }
     })
@@ -246,6 +249,15 @@
     type: 'bar',
     data:dados,
     options: {
+      plugins:{
+          legend:{
+            labels:{
+              font:{
+                size: 16
+              }
+            }
+          }
+        },
       scales: {
         y: {
           ticks:{

@@ -132,7 +132,10 @@
           
         } else {
           mensagem.style.color = "#F55959";
-          mensagem.innerHTML = "Houve um problema ao realizar seu cadastro!";
+          console.log(resposta)
+          resposta.json().then((json)=>{
+            mensagem.innerHTML = `${json}`;
+          })
         }
       });
     

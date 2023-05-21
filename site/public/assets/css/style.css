@@ -182,9 +182,12 @@ body{
     background-image: url('../img/eu.svg');
 }
 .conteudo-foto.sobre{
-    background-image: url('../icon/LOGO.svg');
-    background-size: cover;
+    height: 600px;
+    width: 600px;
+    background-image: url('../img/telas.png');
+    background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
 }
 .conteudo-gif{
     width: 360px;

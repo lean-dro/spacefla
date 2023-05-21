@@ -26,7 +26,8 @@ O spacefla é um espaço para comentar e avaliar a performance de um jogador em 
 ## Screenshot
 
 ![App Screenshot](site/public/assets/img/corneta-readme.png)
-
+![App Screenshot2](site/public/assets/img/corneta-readme2.png)
+![App Screenshot3](site/public/assets/img/corneta-readme3.png)
 
 
 
