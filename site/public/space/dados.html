@@ -382,7 +382,8 @@ obterMaiorCompeticao()
       if(resposta.ok){
         resposta.json().then((json)=>{
           console.log(json)
-          var nomeCompeticao = (json[0].competicao).replace(" ", "")
+          var nomeCompeticao = (json[0].competicao).replace(" ", "").replace(" ", "")
+          nomeCompeticao.replace(" ", "")
           competicao.innerHTML = `
                 <div class="foto-competicao ${nomeCompeticao}"></div>
                 <span class="texto-competicao">Competição com mais cornetas</span>
