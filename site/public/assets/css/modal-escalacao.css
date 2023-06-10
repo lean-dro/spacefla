@@ -1,0 +1,153 @@
+.fundo-modal-escalacao{
+    background: rgba(0, 0, 0, 0.65);
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    z-index: 1;
+    position: fixed;
+}
+.show-escalacao{
+    display: flex;
+}
+.modal-escalacao{
+    width: 1300px;
+    height: 700px;
+     margin: auto;
+    background: #1A1A1A;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.modal-escopo-escalacao{
+    display: flex;
+    width: 90%;
+    
+    padding-top: 60px;
+    justify-content: space-between;
+}
+#campo{
+    background-image: url(../icon/CAMPO.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 384px;
+    height: 535px;
+    display: flex;
+    align-items: center;
+    background-position: center;
+    justify-content: center;
+}
+
+.lista-jogadores-escalacao{
+    width: 440px;
+    height: 480px;
+    background: #0F0F0F;
+    display: flex;
+    flex-direction: column;
+    border-radius: 45px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 25px;
+    align-items: center;
+    gap: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.item-lista-escalacao{
+    padding: 20px;
+    width: 417px;
+    height: 15px;
+    cursor: pointer;
+    display: flex;
+    background: #212121;
+    border-radius: 30px;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid transparent;
+    transition: linear 0.2s;
+}
+.item-lista-escalacao:hover{
+    border: 2px solid #F55959;
+    transition: linear 0.2s;
+}
+.nome-escalacao{
+    font-size: 15px;
+    color: #FFFFFF;
+}
+.badge{
+    width: 46px;
+    height: 25px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.badge.gol{
+    background: url('../icon//badges/GOL.svg');
+}
+.badge.zag{
+    background: url('../icon//badges/ZAG.svg');
+}
+.badge.ld{
+    background: url('../icon//badges/LD.svg');
+}
+.badge.le{
+    background: url('../icon//badges/LE.svg');
+}
+.badge.vol{
+    background: url('../icon//badges/VOL.svg');
+}
+.badge.mei{
+    background: url('../icon//badges/MEI.svg');
+}
+.badge.ata{
+    background: url('../icon//badges/ATA.svg');
+}
+
+
+
+.botao-modal-escalacao{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background: #F55959;
+    border-radius: 100px 0px 20px 0px;
+    width: 261px;
+    height: 68px;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.gol-icon{
+    width: 30px;
+    filter: invert(100%);
+}
+.botao-modal-escalacao>.gol-icon:hover{
+    width: 25px;
+}
+
+.opcoes-escalacao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+    height: 100%;
+}
+.select-escalacao{
+    background: #0F0F0F;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding-left: 20px;
+    border-color: transparent !important;
+    width: 255px;
+    height: 51px;
+}
+

@@ -44,9 +44,18 @@ CREATE TABLE curtidaCorneta(
   constraint fkCorneta foreign key(fkCorneta) references corneta(idCorneta),
   constraint pkCurtida primary key(idCurtida, fkUsuario, fkCorneta)
 );
-
-
-
+CREATE TABLE escalacaoIdeal(
+	idEscalacaoIdeal int auto_increment,
+    fkUsuario int,
+    constraint fkUsuarioEscalacao foreign key(fkUsuario) references usuario(idUsuario),
+    fkJogador int,
+    constraint fkJogadorEscalacao foreign key(fkJogador) references jogador(idJogador),
+    formacao CHAR(5),
+    tatica CHAR(15),
+    constraint chkTatica check(tatica in('Ofensivo', 'Neutro', 'Defensivo')),
+    constraint chkEscalacao check(formacao in('4-3-3','4-5-1','4-4-2')),
+    constraint pkEscalacao primary key(idEscalacaoIdeal, fkUsuario, fkJogador)
+);
 INSERT INTO jogador(numeroJogador, posicaoJogador, nomeJogador,fotoJogador)
 VALUES
 (1, 'Goleiro', 'Santos', 'santos.png'),

@@ -13,7 +13,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 var cornetaRouter = require("./src/routes/cornetas");
 var jogadorRouter = require("./src/routes/jogadores")
 var curtidasRouter = require("./src/routes/curtidas")
-
+var escalacoesRouter = require("./src/routes/escalacoes")
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -25,6 +25,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/cornetas", cornetaRouter);
 app.use("/jogadores", jogadorRouter);
 app.use("/curtidas", curtidasRouter)
+app.use("/escalacoes", escalacoesRouter)
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

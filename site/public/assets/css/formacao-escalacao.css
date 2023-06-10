@@ -1,0 +1,186 @@
+.escalacao{
+    width: 97%;
+    height: 93%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+.linha{
+    display: flex;
+    width: 100%;
+}
+.defesa{
+    height: 170px;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.meio-campo{
+    height: 206px;
+    width: 100%;
+    display: flex;
+    
+   
+}
+.ataque{
+    height: 132px;
+    width: 100%;
+    display: flex;
+}
+.foto-escalacao{
+width: 58px;
+height: 58px;
+background: #121212;
+background-position: center;
+background-size: cover;
+
+border-radius: 100px;
+}
+.foto-escalacao.escolhido{
+    border: 3.5px solid #FFFFFF;
+}
+/* padrão de defesa */
+
+.linha.goleiro{
+    justify-content: center;
+    margin-top: 25px;
+}
+.linha.zaga-laterais{
+    height: 50%;
+    justify-content: space-evenly;
+}
+.zaga{
+    align-self: end;
+}
+
+/* 4-4-2 */
+.linha.volantes-meias-4-2-2{
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+.meia-4-2-2{
+    align-self: flex-start;
+}
+
+.linha.atacantes-4-2-2{
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* 4-3-3 */
+.meio-campo.meio-4-3-3{
+    align-items: flex-end;
+}
+.linha.volantes-meias-4-3-3{
+    justify-content: space-evenly;
+    height: 70%;
+}
+.volante-4-3-3{
+    align-self: flex-end;
+}
+.linha.atacantes-4-3-3{
+    justify-content: space-evenly;
+    align-items: flex-end;
+    height: 80%;
+}
+.centroavante{
+    align-self: center;
+}
+
+/* 4-5-1 */
+
+.meio-campo.meio-4-5-1{
+    align-items: center;
+}
+.linha.volantes-meias-4-5-1{
+    height: 85%;
+    justify-content: space-around;
+    align-items: center;
+}
+.meia-atacante-4-5-1{
+    align-self: flex-start;
+}
+.volante-4-5-1{
+    align-self: flex-end;
+}
+.linha.atacantes-4-5-1{
+    justify-content: center;
+    align-items: center;
+}
+/* FOTOS */
+.foto-escalacao.j1{
+    background-image: url('../img/jogadores/rostos/santos.svg'); 
+    }      
+    .foto-escalacao.j2{
+        background-image: url('../img/jogadores/rostos/hugo.svg'); 
+    }
+    .foto-escalacao.j3{
+        background-image: url('../img/jogadores/rostos/matheus.svg'); 
+    }
+    .foto-escalacao.j4{
+        background-image: url('../img/jogadores/rostos/rodrigo.svg'); 
+    }
+    .foto-escalacao.j5{
+        background-image: url('../img/jogadores/rostos/leo.svg'); 
+    }
+    .foto-escalacao.j6{
+        background-image: url('../img/jogadores/rostos/david.svg'); 
+    }
+    .foto-escalacao.j7{
+        background-image: url('../img/jogadores/rostos/fabricio.svg'); 
+    }
+    .foto-escalacao.j8{
+        background-image: url('../img/jogadores/rostos/pablo.svg'); 
+    }
+    .foto-escalacao.j9{
+        background-image: url('../img/jogadores/rostos/matheuszinho.svg'); 
+    }
+    .foto-escalacao.j10{
+        background-image: url('../img/jogadores/rostos/varela.svg'); 
+    }
+    .foto-escalacao.j11{
+        background-image: url('../img/jogadores/rostos/filipe.svg'); 
+    }
+    .foto-escalacao.j12{
+        background-image: url('../img/jogadores/rostos/ayrton.svg'); 
+    }
+    .foto-escalacao.j13{
+        background-image: url('../img/jogadores/rostos/vidal.svg'); 
+    }
+    .foto-escalacao.j14{
+        background-image: url('../img/jogadores/rostos/thiago.svg'); 
+    }
+    .foto-escalacao.j15{
+        background-image: url('../img/jogadores/rostos/pulgar.svg'); 
+    }
+    .foto-escalacao.j16{
+        background-image: url('../img/jogadores/rostos/gerson.svg'); 
+    }
+    .foto-escalacao.j17{
+        background-image: url('../img/jogadores/rostos/ribeiro.svg'); 
+    }
+    .foto-escalacao.j18{
+        background-image: url('../img/jogadores/rostos/arrasca.svg'); 
+    }
+    .foto-escalacao.j19{
+        background-image: url('../img/jogadores/rostos/victor.svg'); 
+    }
+    .foto-escalacao.j20{
+        background-image: url('../img/jogadores/rostos/franca.svg'); 
+    }
+    .foto-escalacao.j21{
+        background-image: url('../img/jogadores/rostos/gabi.svg'); 
+    }
+    .foto-escalacao.j22{
+        background-image: url('../img/jogadores/rostos/bruno.svg'); 
+    }
+    .foto-escalacao.j23{
+        background-image: url('../img/jogadores/rostos/pedro.svg'); 
+    }
+    .foto-escalacao.j24{
+        background-image: url('../img/jogadores/rostos/marinho.svg'); 
+    }
+    .foto-escalacao.j25{
+        background-image: url('../img/jogadores/rostos/cebola.svg'); 
+    }
