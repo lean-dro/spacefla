@@ -219,11 +219,12 @@ function gerarCornetas() {
   
   feed.innerHTML ="";
   for (var contador = 0; contador < cornetas.length; contador++) {
-  
+            
             var corneta = cornetas[contador].idCorneta;
             var comentario = cornetas[contador].comentarioCorneta;
             var idJogador = cornetas[contador].fkJogador;
             var usuario = cornetas[contador].nomeUsuario;
+            var fkUsuario = cornetas[contador].fkUsuario;
             var competicao = (cornetas[contador].competicao).replace(" ", "").replace(" ", "");
             var tipo = cornetas[contador].tipoCorneta;
             var classeTipo;
@@ -249,7 +250,7 @@ function gerarCornetas() {
                         <div class="escopoCorneta">
                           <div class="conteudoCorneta">
                             <div class='infosCorneta'>
-                              <p class="usuario">@${usuario} </p>
+                              <p onclick="escolherUsuarioFormacao(${fkUsuario})" class="usuario">@${usuario} </p>
                               <img class='icon-competicao' src="../assets/img/competicao/${competicao}.png" alt="">
                               <p class='tipo-corneta ${classeTipo}'>${tipo}</p>
 
@@ -272,6 +273,9 @@ function gerarCornetas() {
           }
 
 }
-
+function escolherUsuarioFormacao(id) {
+  sessionStorage.ID_USUARIO_ESCOLHIDO = id
+  window.location.href = "escalacao-ideal.html"
+}
 
 

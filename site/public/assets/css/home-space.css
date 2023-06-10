@@ -212,6 +212,7 @@
 .usuario{
     color: #F55959;
     font-size: 21px;
+    cursor: pointer;
 }
 .comentario{
     font-size: 14px;

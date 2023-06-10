@@ -5,7 +5,9 @@ function listar() {
     return database.executar(instrucao)
 }
 function listarEscalacaoUsuario(fkUsuario) {
-    var instrucao= `select * from escalacaoIdeal where fkUsuario = ${fkUsuario};`
+    var instrucao= `SELECT fkUsuario, fkJogador, formacao, tatica, nomeUsuario FROM escalacaoIdeal 
+	INNER JOIN usuario on fkUsuario = idUsuario
+    WHERE fkUsuario = ${fkUsuario};`
     return database.executar(instrucao)
 }
 function cadastrar(fkJogador, fkUsuario, formacao, tatica) {
