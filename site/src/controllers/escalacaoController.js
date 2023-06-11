@@ -14,20 +14,23 @@ async function listarEscalacaoUsuario(req, res) {
 
 async function cadastrar(req,res) {
     var fkUsuario = req.body.fkUsuarioServer
-    var fkJogador = req.body.fkJogadorServer
+    var jogadores = req.body.jogadoresServer
     var tatica = req.body.taticaServer
     var formacao = req.body.formacaoServer
 
     var escalacaoUsuario = await escalacaoModel.listarEscalacaoUsuario(fkUsuario)
 
-    if(escalacaoUsuario.length == 11){
+    if(escalacaoUsuario.length >= 11){
        await escalacaoModel.apagar(fkUsuario)
     }
-    escalacaoModel.cadastrar(fkJogador,fkUsuario,formacao,tatica).then(function() {
-        res.status(204).send("Escalado")
-    }).catch(function(resposta) {
-        console.log(resposta)
-    })
+    for(var i = 0; i<jogadores.length; i++){
+        await escalacaoModel.cadastrar(jogadores[i],fkUsuario,formacao,tatica).then(function() {
+            res.status(204).send("Escalado")
+        }).catch(function(resposta) {
+            console.log(resposta)
+        })
+    }
+
 }
 
 

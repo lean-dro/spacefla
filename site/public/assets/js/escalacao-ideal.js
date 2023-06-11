@@ -1,12 +1,14 @@
 async function obterEscalacaoIdeal() {
     var query = await fetch(`/escalacoes/listarEscalacaoUsuario/${sessionStorage.ID_USUARIO_ESCOLHIDO}`)
     var json = await query.json()
-    console.log(json);
     var formacao = json[0].formacao
     var nome = json[0].nomeUsuario
     var tatica = json[0].tatica
     var badgeTatica = `<span class="badge-tatica ${tatica}"></span>`
-    span_info_usuario.innerHTML += `<p>${nome}</p>`
+    span_info_usuario.innerHTML = `
+    <img class="escudo-info-escalacao" src="../assets/icon/ESCUDO.svg" alt="">
+    <p>${nome}</p>`
+
     span_info_escalacao.innerHTML=`
     <p>${formacao}</p>
     ${badgeTatica}
@@ -15,8 +17,9 @@ async function obterEscalacaoIdeal() {
     distribuirJogadores(json)
 }
 function montarFormacao(formacao) {
-    var formacaoFinal = defesaPadraoTela;
     var escalacaoDiv = document.getElementById("div_escalacao_tela")
+    escalacaoDiv.innerHTML = ""
+    var formacaoFinal = defesaPadraoTela;
 
         if(formacao == "4-3-3"){
             formacaoEscolhida = formacao433Tela
@@ -101,3 +104,7 @@ var formacao451Tela=`
     </div>
 </div>
 `
+
+setInterval(()=>{
+    obterEscalacaoIdeal()
+},500)

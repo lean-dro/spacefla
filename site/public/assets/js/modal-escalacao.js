@@ -188,35 +188,33 @@ async function validarEscalacao() {
         valido = false
         alert("Formação inválida!")
     }
-    
+    if(jogadoresEscalados.length > 11){
+        valido = false
+        alert("Selecione 11 jogadores!")
+        toggleModalEscalacao()
+    }  
     if(valido){
         var escalacao = escalacoes[formacao-1]
         var tatica = taticas[tatica-1]
-        cadastrar(escalacao, tatica)
+        await cadastrar(escalacao, tatica)
         toggleModalEscalacao()
     }
     return valido
 }
 
-function cadastrar(formacao, tatica) {
-    for(var i = 0; i<jogadoresEscalados.length; i++){
-        var jogadorAtual = jogadoresEscalados[i]
-        fetch("/escalacoes/cadastrar", {
+async function cadastrar(formacao, tatica) {
+        await fetch("/escalacoes/cadastrar", {
             method: "post",
             headers:{
                 "Content-type": "application/json"
             },
             body: JSON.stringify({
                 fkUsuarioServer: sessionStorage.ID_USUARIO,
-                fkJogadorServer: jogadorAtual,
+                jogadoresServer: jogadoresEscalados,
                 taticaServer: tatica,
                 formacaoServer: formacao
             })
-        }).then(function(resposta) {
-            console.log(resposta)
-            
         })
-    }
 }
 function toggleModalEscalacao() {
     var escalacaoDiv = document.getElementById("div_escalacao")

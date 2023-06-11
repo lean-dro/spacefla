@@ -32,7 +32,6 @@ async function comentar() {
             }else{
                 textoValido = true
             }
-            console.log(texto[i])
         }
     
         if(!textoValido){
@@ -51,10 +50,11 @@ async function comentar() {
                 })
             }).then(function(resposta) {
                 console.log(resposta)
-                window.location.reload()
+                obterComentarios()
+                comentario.value = ""
             })
             
         }
     }
 }
-{/*  */}
+
