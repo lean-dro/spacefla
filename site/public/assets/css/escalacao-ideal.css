@@ -1,7 +1,9 @@
 .escalacao-comentarios{
 display: flex;
 align-items: center;
-padding: 0px 50px;
+justify-content: space-between;
+width: 75%;
+padding: 10px 50px;
 }
 #campo.tela{
     width: 472px;
@@ -58,6 +60,8 @@ height: 653.92px;
     width: 12px;
     height: 7px;
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .Ofensivo{
     background-image: url('../icon/badges/ofensivo.svg');
@@ -67,4 +71,85 @@ height: 653.92px;
 }
 .Neutro{
     background-image: url('../icon/badges/neutro.svg');
+}
+
+.comentarios{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+.lista-comentarios{
+    width: 450px;
+    height: 315px;
+    background: #212121;
+    border-radius: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 25px;
+    
+    overflow-y: auto;
+}
+.comentario{
+    margin: 00px 0px 15px 0px;
+
+    width: 93%;
+    height: 131px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background: #0F0F0F;
+    gap: 8px;
+    border-radius: 30px;
+}
+.usuario-comentario{
+    color: #F55858;
+}
+.conteudo-comentario{
+    overflow-y: auto;
+    height: 89%;
+}
+.comentar{
+    width: 450px;
+    display: flex;
+    height: 320px;
+    background: #212121;
+    border-radius: 20px;
+    padding: 25px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#comentario{
+    all: unset; 
+    width: 95%;
+    background-color: #0F0F0F;
+    text-align: start;
+    padding: 15px;
+    resize: none;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    border-radius: 15px;
+    height: 72%;
+}
+#comentario::placeholder{
+    color: #676767;
+}
+.btn-comentar{
+    text-align: center;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 45px;
+    background: #F55858;
+    border-radius: 30px;
+    align-self: flex-end;
+    transition: 250ms linear;
+}
+.btn-comentar:hover{
+    background: #0F0F0F;
+    color: #F55858;
+    transition: 250ms linear;
 }

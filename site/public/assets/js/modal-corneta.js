@@ -1,3 +1,5 @@
+var ultimoJogador = ""
+var foto = document.getElementById("foto_modal").classList;
 function buscarJogadores() {
     select_jogador.innerHTML = ' <option value="0">Escolha um Jogador</option>';
     fetch("/jogadores/listar", {
@@ -65,3 +67,32 @@ function buscarJogadores() {
       }
     })
   }
+  function toggleModal() {
+    fundo_modal.classList.toggle("show");
+    select_atuacao.value = 0;
+    select_competicao.value = 0;
+    select_jogador.value = 0;
+    textarea_analise.value = "";
+    if(ultimoJogador != ""){
+      foto.remove(ultimoJogador)
+    }
+   
+    buscarJogadores();
+  }
+  function atualizarJogador() {
+   
+    var idJogador = select_jogador.value;
+    var classe
+    if(ultimoJogador == ""){
+       classe = "j"+idJogador;
+       foto.add(classe)
+       ultimoJogador = classe;
+    }else{
+      foto.remove(ultimoJogador);
+      classe = "j"+idJogador;
+      foto.add(classe)
+      ultimoJogador = classe;
+    }
+   
+    
+ }

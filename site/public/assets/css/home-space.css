@@ -49,6 +49,10 @@
     align-items: center;
     padding-left: 10px;
     gap: 10px;
+    cursor: pointer;
+}
+#usuario_perfil:hover{
+    text-decoration: underline;
 }
 .escudo-perfil{
     width: 33px;
@@ -131,6 +135,10 @@
 }
 .usuario-top{
     color: #F55959;
+    cursor: pointer;
+}
+.usuario-top:hover{
+    text-decoration: underline;
 }
 .info-foto-corneta-top{
     height: 40%;
@@ -213,6 +221,9 @@
     color: #F55959;
     font-size: 21px;
     cursor: pointer;
+}
+.usuario:hover{
+    text-decoration: underline;
 }
 .comentario{
     font-size: 14px;

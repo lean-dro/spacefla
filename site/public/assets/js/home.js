@@ -1,11 +1,10 @@
 usuario_perfil.innerHTML = sessionStorage.NOME_USUARIO
-var ultimoJogador="";
 var cornetas = [];
 
 var cornetasCurtidas = []
 var cornetaTop = {}
 var contadorCurtidos;
-var foto = document.getElementById("foto_modal").classList;
+
 
 var atualizar = setInterval(()=>{
           obterCornetasCurtidas()
@@ -138,35 +137,7 @@ async function curtir(x, corneta) {
   
 }
 
-function atualizarJogador() {
- 
-  var idJogador = select_jogador.value;
-  var classe
-  if(ultimoJogador == ""){
-     classe = "j"+idJogador;
-     foto.add(classe)
-     ultimoJogador = classe;
-  }else{
-    foto.remove(ultimoJogador);
-    classe = "j"+idJogador;
-    foto.add(classe)
-    ultimoJogador = classe;
-  }
- 
-  
-}
-function toggleModal() {
-  fundo_modal.classList.toggle("show");
-  select_atuacao.value = 0;
-  select_competicao.value = 0;
-  select_jogador.value = 0;
-  textarea_analise.value = "";
-  if(ultimoJogador != ""){
-    foto.remove(ultimoJogador)
-  }
- 
-  buscarJogadores();
-}
+
 
 async function obterCornetasCurtidas() {
   await fetch("/cornetas/listarCurtidos", {

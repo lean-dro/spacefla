@@ -44,6 +44,7 @@ CREATE TABLE curtidaCorneta(
   constraint fkCorneta foreign key(fkCorneta) references corneta(idCorneta),
   constraint pkCurtida primary key(idCurtida, fkUsuario, fkCorneta)
 );
+
 CREATE TABLE escalacaoIdeal(
 	idEscalacaoIdeal int auto_increment,
     fkUsuario int,
@@ -56,6 +57,19 @@ CREATE TABLE escalacaoIdeal(
     constraint chkEscalacao check(formacao in('4-3-3','4-5-1','4-4-2')),
     constraint pkEscalacao primary key(idEscalacaoIdeal, fkUsuario, fkJogador)
 );
+CREATE TABLE comentarioPerfil(
+	idComentario int auto_increment,
+    textoComentario TEXT,
+    dtComentario DATETIME default now(),
+    fkUsuarioPerfil int,
+    constraint fkUsuarioPerfil foreign key(fkUsuarioPerfil) references usuario(idUsuario),
+	fkUsuarioComentario int,
+    constraint fkUsuarioComentario foreign key(fkUsuarioComentario) references usuario(idUsuario),
+    constraint pkComentario primary key(idComentario, fkUsuarioPerfil, fkUsuarioComentario)
+);
+
+SELECT * FROM escalacaoIdeal;
+TRUNCATE TABLE escalacaoIdeal;
 INSERT INTO jogador(numeroJogador, posicaoJogador, nomeJogador,fotoJogador)
 VALUES
 (1, 'Goleiro', 'Santos', 'santos.png'),

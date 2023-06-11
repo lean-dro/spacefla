@@ -192,16 +192,16 @@ async function validarEscalacao() {
     if(valido){
         var escalacao = escalacoes[formacao-1]
         var tatica = taticas[tatica-1]
-        await cadastrar(escalacao, tatica)
+        cadastrar(escalacao, tatica)
         toggleModalEscalacao()
     }
     return valido
 }
 
-async function cadastrar(formacao, tatica) {
+function cadastrar(formacao, tatica) {
     for(var i = 0; i<jogadoresEscalados.length; i++){
         var jogadorAtual = jogadoresEscalados[i]
-        await fetch("/escalacoes/cadastrar", {
+        fetch("/escalacoes/cadastrar", {
             method: "post",
             headers:{
                 "Content-type": "application/json"
@@ -214,7 +214,7 @@ async function cadastrar(formacao, tatica) {
             })
         }).then(function(resposta) {
             console.log(resposta)
-          
+            
         })
     }
 }
