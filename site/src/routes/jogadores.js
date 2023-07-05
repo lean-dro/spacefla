@@ -7,7 +7,9 @@ var jogadorController = require("../controllers/jogadorController");
 router.get("/", function (req, res) {
     jogadorController.testar(req, res);
 });
-
+router.get("/fotos",function (req,res) {
+    jogadorController.buscarFoto(req, res);
+})
 router.get("/listar", function (req, res) {
     jogadorController.listar(req, res);
 });

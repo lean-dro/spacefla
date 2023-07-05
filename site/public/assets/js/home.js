@@ -1,54 +1,53 @@
-usuario_perfil.innerHTML = sessionStorage.NOME_USUARIO
+usuario_perfil.innerHTML = sessionStorage.NOME_USUARIO;
 var cornetas = [];
 
-var cornetasCurtidas = []
-var cornetaTop = {}
+var cornetasCurtidas = [];
+var cornetaTop = {};
 var contadorCurtidos;
 
+var tempoReal = setInterval(async () => {
+  obterCornetasCurtidas();
+  buscarTopJogadores();
+  buscarTopCorneta();
+  gerarTopCorneta();
+}, 8000);
 
-var atualizar = setInterval(()=>{
-          obterCornetasCurtidas()
-          obterCornetas()
-          gerarCornetas()
-          buscarTopJogadores()
-          buscarTopCorneta()
-          gerarTopCorneta()
-}, 60000)
+
+
 async function buscarTopCorneta() {
-await fetch("/cornetas/listar-top",{
-  method: "get",
-  headers:{
-    "Content-type": "application/json"
+  try {
+    var busca = await fetch ("/cornetas/listar-top");
+    var jsonTopCorneta = await busca.json();
+    cornetaTop = jsonTopCorneta[0];
+    gerarTopCorneta();
+  } catch (error) {
+    top_corneta_corpo.innerHTML =
+    "Sem cornetas mais curtidas por enquanto...";
   }
-}).then(function(resposta) {
-  if(resposta.ok){
-    resposta.json().then((json)=>{
-      cornetaTop = json[0]
-      gerarTopCorneta()
-    })
-  }else{
-    top_corneta_corpo.innerHTML = "Sem cornetas mais curtidas por enquanto..."
-  }
-})
 }
+
 function gerarTopCorneta() {
-var classeTipo;
-var classeCurtida = "curtir";
-            if (cornetaTop.tipoCorneta == "Jogando bem") {
-              classeTipo = "Positiva";
-            } else {
-              classeTipo = "Negativa";
-            }
-            for(contadorCurtidos = 0; contadorCurtidos < cornetasCurtidas.length; contadorCurtidos++){
-              if(cornetasCurtidas[contadorCurtidos].fkCorneta == cornetaTop.idCorneta){
-                classeCurtida = "curtido"
-                contadorCurtidos = cornetasCurtidas.length-1
-              }else{
-                classeCurtida = "curtir"
-              }
-            }
-if(cornetaTop.curtidas > 0){
-top_corneta_corpo.innerHTML = `
+  var classeTipo;
+  var classeCurtida = "curtir";
+  if (cornetaTop.tipoCorneta == "Jogando bem") {
+    classeTipo = "Positiva";
+  } else {
+    classeTipo = "Negativa";
+  }
+  for (
+    contadorCurtidos = 0;
+    contadorCurtidos < cornetasCurtidas.length;
+    contadorCurtidos++
+  ) {
+    if (cornetasCurtidas[contadorCurtidos].fkCorneta == cornetaTop.idCorneta) {
+      classeCurtida = "curtido";
+      contadorCurtidos = cornetasCurtidas.length - 1;
+    } else {
+      classeCurtida = "curtir";
+    }
+  }
+  if (cornetaTop.curtidas > 0) {
+    top_corneta_corpo.innerHTML = `
 <div class="usuario-analise-top">
             <div class="usuario-top">@${cornetaTop.nomeUsuario}</div>
             <div class="analise-top">
@@ -68,154 +67,105 @@ top_corneta_corpo.innerHTML = `
               </div>
             </div>
             <div class="foto-corneta-top">
-              <div class="fotoJogador j${cornetaTop.fkJogador}"></div>
+              <div style='background-image: url(../../assets/img/jogadores/${cornetaTop.fotoJogador})' class="fotoJogador"></div>
             </div>
           </div>
 
-`
-}else{
-top_corneta_corpo.innerHTML = ``
+`;
+  } else {
+    top_corneta_corpo.innerHTML = ``;
+  }
 }
 
-}
-function buscarTopJogadores() {
-lista.innerHTML=""
-  fetch("/jogadores/listar-top",{
-    method: "get",
-    headers: {
-      "Content-type": "application/json",
-    },
-  }).then(function(resposta) {
-    resposta.json().then(function(json) {
-      for (var contadorTopJogadores = 0;contadorTopJogadores < json.length;contadorTopJogadores++) {
-        lista.innerHTML += `
-          <div class="item-lista">${json[contadorTopJogadores]}</div>
-        `
-      }
-    })
-  })
+
+async function buscarTopJogadores() {
+  
+  var busca = await fetch("/jogadores/listar-top");
+  var jsonTopJogadores = await busca.json();
+  lista.innerHTML = "";
+  for (
+    var contadorTopJogadores = 0;
+    contadorTopJogadores < jsonTopJogadores.length;
+    contadorTopJogadores++
+  ) {
+    lista.innerHTML += `
+      <div class="item-lista">${jsonTopJogadores[contadorTopJogadores]}</div>
+    `;
+  }
 }
 
 async function curtir(x, corneta) {
-  
-    
-  
-  if(x.classList.contains("curtido")){
-    x.classList.remove("curtido")
-    x.classList.add("curtir")
-  }else{
-    x.classList.remove("curtir")
-    x.classList.add("curtido")
+  if (x.classList.contains("curtido")) {
+    x.classList.remove("curtido");
+    x.classList.add("curtir");
+  } else {
+    x.classList.remove("curtir");
+    x.classList.add("curtido");
   }
-  x.classList.toggle("curtido")
-  
-  console.log(x)
-  fetch("/curtidas/verificar",{
-    method: "post",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({
-      cornetaServer: corneta,
-      usuarioServer: sessionStorage.ID_USUARIO
-    })
-  }).then(function(resposta) {
-      if(resposta.ok){
-        resposta.json().then(function(curtidas) {
-         
-          console.log(curtidas)
-          obterCornetasCurtidas()
-          obterCornetas()
-          gerarCornetas()
-          buscarTopCorneta()
-          gerarTopCorneta()
-        })
-      }else{
-        console.log("erro")
-      }
-  })
-  
+  x.classList.toggle("curtido");
+
+  var busca = await fetch(`/curtidas/verificar/${sessionStorage.ID_USUARIO}/${corneta}`);
+  if(busca.ok){
+    obterCornetasCurtidas();
+    obterCornetas();
+    buscarTopCorneta();
+    gerarTopCorneta();
+  }
+
 }
-
-
 
 async function obterCornetasCurtidas() {
-  await fetch("/cornetas/listarCurtidos", {
-    method: "post",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({
-      usuarioServer: sessionStorage.ID_USUARIO 
-    })
-  }).then(function(resposta) {
-    if (resposta.ok) {
-      resposta.json().then((json) => {
-        cornetasCurtidas = json
-      }).catch(function(erro) {
-        console.log(erro)
-      });
-    }
-  })
+  var busca = await fetch(`/cornetas/listarCurtidos/${sessionStorage.ID_USUARIO}`)
+  var jsonCornetasCurtidas = await busca.json();
+  cornetasCurtidas = jsonCornetasCurtidas;
 }
+
 async function obterCornetas() {
-  await fetch("/cornetas/listar", {
-    method: "get",
-    headers: {
-      "Content-type": "application/json",
-    },
-  }).then(function (resposta) {
-    if (resposta.ok) {
-      resposta.json().then((json) => {
-        if (json.length == 0) {
-          feed.innerHTML = "Sem cornetas por enquanto...";
-        } else {
-          cornetas = json
-          gerarCornetas()
-        }
-      }).catch(function(erro) {
-        console.log(erro)
-      });
-    } else {
-      feed.innerHTML = "Sem cornetas por enquanto...";
-    }
-  }).catch(function(erro){
-    console.log(erro)
-  });
+  var busca = await fetch("/cornetas/listar");
+  var jsonCornetas = await busca.json();
+  if(jsonCornetas.length == 0){
+    feed.innerHTML = "Sem cornetas por enquanto...";
+  }else{
+    cornetas = jsonCornetas;
+    await gerarCornetas();
+  }
 }
 
-
-
-function gerarCornetas() {
-  
-  feed.innerHTML ="";
+async function gerarCornetas() {
+  feed.innerHTML = "";
   for (var contador = 0; contador < cornetas.length; contador++) {
-            
-            var corneta = cornetas[contador].idCorneta;
-            var comentario = cornetas[contador].comentarioCorneta;
-            var idJogador = cornetas[contador].fkJogador;
-            var usuario = cornetas[contador].nomeUsuario;
-            var fkUsuario = cornetas[contador].fkUsuario;
-            var competicao = (cornetas[contador].competicao).replace(" ", "").replace(" ", "");
-            var tipo = cornetas[contador].tipoCorneta;
-            var classeTipo;
-            var curtidas = cornetas[contador].curtidas 
-            var classeCurtida = "curtir";
-            if (tipo == "Jogando bem") {
-              classeTipo = "Positiva";
-            } else {
-              classeTipo = "Negativa";
-            }
-            for(contadorCurtidos = 0; contadorCurtidos < cornetasCurtidas.length; contadorCurtidos++){
-              if(cornetasCurtidas[contadorCurtidos].fkCorneta == corneta){
-                classeCurtida = "curtido"
-                contadorCurtidos = cornetasCurtidas.length-1
-              }else{
-                classeCurtida = "curtir"
-              }
-            }
-           
-            feed.innerHTML += `
+    var corneta = cornetas[contador].idCorneta;
+    var comentario = cornetas[contador].comentarioCorneta;
+    var idJogador = cornetas[contador].fkJogador;
+    var usuario = cornetas[contador].nomeUsuario;
+    var fkUsuario = cornetas[contador].fkUsuario;
+    var competicao = cornetas[contador].competicao
+      .replace(" ", "")
+      .replace(" ", "");
+    var tipo = cornetas[contador].tipoCorneta;
+    var classeTipo;
+    var curtidas = cornetas[contador].curtidas;
+    var classeCurtida = "curtir";
+    if (tipo == "Jogando bem") {
+      classeTipo = "Positiva";
+    } else {
+      classeTipo = "Negativa";
+    }
+    for (
+      contadorCurtidos = 0;
+      contadorCurtidos < cornetasCurtidas.length;
+      contadorCurtidos++
+    ) {
+      if (cornetasCurtidas[contadorCurtidos].fkCorneta == corneta) {
+        classeCurtida = "curtido";
+        contadorCurtidos = cornetasCurtidas.length - 1;
+      } else {
+        classeCurtida = "curtir";
+      }
+    }
+
+    var fotoJogador = "../../assets/img/jogadores/"+cornetas[contador].fotoJogador;
+    feed.innerHTML += `
           
                   <div class="corneta">
                         <div class="escopoCorneta">
@@ -237,16 +187,12 @@ function gerarCornetas() {
                           </div>
 
                         </div>
-                        <div class="fotoJogador j${idJogador}"></div>
+                        <div style="background-image: url('${fotoJogador}')" class="fotoJogador"></div>
                       </div>
-                  `;             
-
-          }
-
+                  `;
+  }
 }
 function escolherUsuarioFormacao(id) {
-  sessionStorage.ID_USUARIO_ESCOLHIDO = id
-  window.location.href = "escalacao-ideal.html"
+  sessionStorage.ID_USUARIO_ESCOLHIDO = id;
+  window.location.href = "escalacao-ideal.html";
 }
-
-

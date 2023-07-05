@@ -191,7 +191,7 @@
               <div class="kpi positiva">
                 <div class="textos-kpi">
                   <span id="porcentagemPositiva" class="porcentagem"></span>
-                  <p class="texto-kpi">das cornetas positivas</p>
+                  <p class="texto-kpi">das cornetas positivas <br><span style="font-size: 15px;">nos últimos 3 dias</span></p>
                 </div>
                 <div  id="fotoPositiva" class="foto">
                  
@@ -200,7 +200,7 @@
               <div class="kpi negativa">
                 <div class="textos-kpi">
                   <span id="porcentagemNegativa" class="porcentagem"></span>
-                  <p class="texto-kpi">das cornetas negativas</p>
+                  <p class="texto-kpi">das cornetas negativas <br><span style="font-size: 15px;">nos últimos 3 dias</span> </p>
                 </div>
                 <div id="fotoNegativa" class="foto">
                  
@@ -226,134 +226,4 @@
 </html>
 <script src="../assets/js/modal-corneta.js"></script>
 <script src="../assets/js/modal-escalacao.js"></script>
-<script>
-  const ctx = document.getElementById('myChart');
- 
-       
-  var maior = 0
-  var menor = 0
- 
-  var dados = { 
-      labels: [],
-      datasets: [{
-        label: 'Cornetas por posição',
-        data: [],
-        borderWidth: 3,
-        color: 'white',
-        borderRadius: 8,
-        backgroundColor: 'rgb(245, 89, 89, 0.5)'
-      }]
-  }
-  var grafico = new Chart(ctx, {
-    type: 'bar',
-    data:dados,
-    options: {
-      plugins:{
-          legend:{
-            labels:{
-              font:{
-                size: 16
-              }
-            }
-          }
-        },
-      scales: {
-        y: {
-          ticks:{
-            stepSize: 1
-          },
-          beginAtZero: true,
-          suggestedMin: menor,
-          suggestedMax: maior
-        }
-      }
-    }
-  });
-
-  var atualizar = setInterval(() => {
-    
-    
-    buscarPorcentagens()
-    buscarQtdPosicao()
-  }, (6000));
-
-  async function buscarPorcentagens() {
-   await  fetch("/cornetas/listarPorcentagens",{
-      method: "get",
-      headers:{
-        "Content-type": "application/json"
-      }
-    }).then(function(resposta) {
-      if(resposta.ok){
-        
-        resposta.json().then((json)=>{
-          console.log(json)
-          fotoPositiva.innerHTML =  `<div  class="fotoJogadorKpi j${json.porcentagemBem[0][0].fkJogador}"></div>`
-          porcentagemPositiva.innerHTML = `${json.porcentagemBem[0][0].porcentagemBem}%`
-          fotoNegativa.innerHTML = `<div  class="fotoJogadorKpi j${json.porcentagemMal[0][0].fkJogador}"></div>`
-          porcentagemNegativa.innerHTML = `${json.porcentagemMal[0][0].porcentagemMal}%`
-        })
-      }
-    })
-  }
-  
-  function buscarQtdPosicao() {
-    dados.labels = []
-    dados.datasets[0].data = []
-    fetch("/cornetas/listarQtdPosicao",{
-      method: "get",
-      headers:{
-        "Content-type":"application/json"
-      }
-    }).then(function(resultado) {
-      if(resultado.ok){
-        resultado.json().then((json)=>{
-          console.log(json)
-            json.forEach(chave => {
-             dados.labels.push(chave.posicao)
-             dados.datasets[0].data.push(chave.contagem)
-            });
-            grafico.update()
-        })
-      }
-    })
-  }
-
-  function maiorMenorValor() {
-     maior = dados.datasets[0].data[0]
-     menor = dados.datasets[0].data[0]
-    for (var i = 0; i < dados.datasets[0].data.length; i++) {
-      if(maior < dados.datasets[0].data[i]){
-        maior = dados.datasets[0].data[i]
-      }
-      if(menor > dados.datasets[0].data[i]){
-        menor = dados.datasets[0].data[i]
-      }
-      
-    }
-  }
-
-
-obterMaiorCompeticao()
-  function obterMaiorCompeticao() {
-    fetch('/cornetas/maiorCompeticao',{
-      method: "get",
-      headers:{
-        "Content-type": "application/json",
-      }
-    }).then(function (resposta) {
-      if(resposta.ok){
-        resposta.json().then((json)=>{
-          console.log(json)
-          var nomeCompeticao = (json[0].competicao).replace(" ", "").replace(" ", "")
-          nomeCompeticao.replace(" ", "")
-          competicao.innerHTML = `
-                <div class="foto-competicao ${nomeCompeticao}"></div>
-                <span class="texto-competicao">Competição com mais cornetas</span>
-          `
-        })
-      }
-    })
-  }
-
-</script>
+<script src="../assets/js/dados.js"> </script>

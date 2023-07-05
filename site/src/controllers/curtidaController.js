@@ -3,8 +3,8 @@ function testar(req,res) {
     console.log("Dentro da curtidaController")
 }
 function verificarCurtida(req, res) {
-    var usuario = req.body.usuarioServer;
-    var corneta = req.body.cornetaServer;
+    var usuario = req.params.idUsuario;
+    var corneta = req.params.idCorneta;
     if(usuario == undefined){
         res.status(400).send("Usuário indefinido")
     }else if(corneta == undefined){

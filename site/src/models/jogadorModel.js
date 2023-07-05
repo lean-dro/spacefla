@@ -6,7 +6,11 @@ function listar() {
     `
     return database.executar(instrucao)
 }
-function listarTop(params) {
+function buscarFoto() {
+    var instrucao = `SELECT idJogador,fotoJogador,nomeJogador FROM jogador;`;
+    return database.executar(instrucao);
+}
+function listarTop() {
     var instrucao = `
     SELECT COUNT(fkJogador) as contagem, nomeJogador 
     FROM corneta 
@@ -18,6 +22,7 @@ function listarTop(params) {
 
 module.exports = {
     listar,
-    listarTop
+    listarTop,
+    buscarFoto
 };
 

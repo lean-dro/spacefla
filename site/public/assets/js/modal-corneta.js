@@ -1,5 +1,5 @@
 var ultimoJogador = ""
-var foto = document.getElementById("foto_modal").classList;
+var foto = document.getElementById("foto_modal").style;
 function buscarJogadores() {
     select_jogador.innerHTML = ' <option value="0">Escolha um Jogador</option>';
     fetch("/jogadores/listar", {
@@ -73,26 +73,12 @@ function buscarJogadores() {
     select_competicao.value = 0;
     select_jogador.value = 0;
     textarea_analise.value = "";
-    if(ultimoJogador != ""){
-      foto.remove(ultimoJogador)
-    }
+    foto.backgroundImage = "";    
    
     buscarJogadores();
   }
-  function atualizarJogador() {
-   
+   function atualizarJogador() {
     var idJogador = select_jogador.value;
-    var classe
-    if(ultimoJogador == ""){
-       classe = "j"+idJogador;
-       foto.add(classe)
-       ultimoJogador = classe;
-    }else{
-      foto.remove(ultimoJogador);
-      classe = "j"+idJogador;
-      foto.add(classe)
-      ultimoJogador = classe;
-    }
-   
-    
+    var fotoJogador =  buscarFotoJogador(idJogador, 'corpo')
+    foto.backgroundImage = `url(${fotoJogador})`;
  }

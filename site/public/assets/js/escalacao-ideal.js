@@ -35,7 +35,8 @@ function distribuirJogadores(escalacao){
     for (var i = 1; i<=11; i++) {
         var posicaoAtual = document.getElementById(`tela_posicao_escalacao${i}`)
         var jogadorAtual = escalacao[i-1]
-        posicaoAtual.classList.add("j"+jogadorAtual.fkJogador)
+        var fotoJogador =  buscarFotoJogador(jogadorAtual.fkJogador, 'rosto')
+        posicaoAtual.style.backgroundImage = `url(${fotoJogador})`;
     }
 }
 

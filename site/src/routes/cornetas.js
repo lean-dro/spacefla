@@ -15,7 +15,7 @@ router.get("/listar-top", function (req, res) {
     cornetaController.listarTop(req, res);
 });
 
-router.post("/listarCurtidos", function (req, res) {
+router.get("/listarCurtidos/:idUsuario", function (req, res) {
     cornetaController.listarCurtidos(req, res);
 });
 

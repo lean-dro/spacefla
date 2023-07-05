@@ -17,6 +17,24 @@ function listar(req, res) {
             }
         );
 }
+function buscarFoto(req, res) {
+    
+    jogadorModel.buscarFoto()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+                console.log(resultado)
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 function listarTop(req, res) {
     jogadorModel.listarTop()
     .then(function(resultado) {
@@ -52,5 +70,6 @@ function listarTop(req, res) {
 }
 module.exports = {
     listar,
-    listarTop
+    listarTop,
+    buscarFoto
 }

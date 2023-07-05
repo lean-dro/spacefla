@@ -4,10 +4,11 @@ var database = require("../database/config");
 function listar() {
     console.log("Acessando corneta model");
     var instrucao = `
-        SELECT corneta.*, nomeUsuario, COUNT(idCurtida) as curtidas
+        SELECT corneta.*, fotoJogador, nomeUsuario, COUNT(idCurtida) as curtidas
         FROM corneta
         left JOIN curtidaCorneta on corneta.idCorneta = fkCorneta
             INNER JOIN usuario ON corneta.fkUsuario = usuario.idUsuario
+            INNER JOIN jogador on corneta.fkJogador = jogador.idJogador
             GROUP BY corneta.idCorneta,
             corneta.tipoCorneta, corneta.comentarioCorneta,
             corneta.dataCorneta, corneta.competicao, fkJogador, fkUsuario
@@ -18,10 +19,12 @@ function listar() {
 } 
 function listarTop() {
     var instrucao = `
-        SELECT corneta.*, nomeUsuario, COUNT(idCurtida) as curtidas
+        SELECT corneta.*, fotoJogador,nomeUsuario, COUNT(idCurtida) as curtidas
         FROM corneta
         left JOIN curtidaCorneta on corneta.idCorneta = fkCorneta
             INNER JOIN usuario ON corneta.fkUsuario = usuario.idUsuario
+            INNER JOIN jogador on corneta.fkJogador = jogador.idJogador
+
             GROUP BY corneta.idCorneta,
             corneta.tipoCorneta, corneta.comentarioCorneta,
             corneta.dataCorneta, corneta.competicao, fkJogador, fkUsuario
@@ -52,8 +55,8 @@ function cadastrar(tipo, comentario, competicao, jogador, usuario){
 function listarPorcentagemBem() {
     var instrucao = `
     SELECT 
-    fkJogador, ROUND(((COUNT(idCorneta)*100)/(SELECT COUNT(idCorneta) FROM corneta WHERE tipoCorneta = "Jogando bem")),0) as porcentagemBem FROM corneta
-    WHERE tipoCorneta = "Jogando bem"
+    fkJogador, ROUND(((COUNT(idCorneta)*100)/(SELECT COUNT(idCorneta) FROM corneta WHERE tipoCorneta = "Jogando bem" AND dataCorneta >= NOW() - INTERVAL 3 DAY)),0) as porcentagemBem FROM corneta
+    WHERE tipoCorneta = "Jogando bem" AND dataCorneta >= NOW() - INTERVAL 3 DAY
     GROUP BY fkJogador
     ORDER BY porcentagemBem DESC;
     `
@@ -63,8 +66,8 @@ function listarPorcentagemBem() {
 function listarPorcentagemMal() {
     var instrucao = `
     SELECT 
-    fkJogador, ROUND(((COUNT(idCorneta)*100)/(SELECT COUNT(idCorneta) FROM corneta WHERE tipoCorneta = "Jogando mal")), 0) as porcentagemMal FROM corneta
-    WHERE tipoCorneta = "Jogando mal"
+    fkJogador, ROUND(((COUNT(idCorneta)*100)/(SELECT COUNT(idCorneta) FROM corneta WHERE tipoCorneta = "Jogando mal" AND dataCorneta >= NOW() - INTERVAL 3 DAY)), 0) as porcentagemMal FROM corneta
+    WHERE tipoCorneta = "Jogando mal" AND dataCorneta >= NOW() - INTERVAL 3 DAY
     GROUP BY fkJogador
     ORDER BY porcentagemMal DESC;
     `

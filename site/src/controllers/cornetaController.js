@@ -40,7 +40,7 @@ function listarTop(req, res) {
 }
 
 function listarCurtidos(req,res) {
-    var usuario = req.body.usuarioServer;
+    var usuario = req.params.idUsuario;
     if(usuario == undefined){
         res.status(400).send("Seu usuario está undefined!");
     }else{

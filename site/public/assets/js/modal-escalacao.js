@@ -143,8 +143,8 @@ function escolherJogador(id) {
             var posicao = document.getElementById(`posicao_escalacao${contagemPosicao}`)
             ultimaPosicao = posicao
             ultimaPosicao.classList.remove("escolhido")
-            posicao.classList.add("j"+id)
-            
+            var fotoJogador =  buscarFotoJogador(id, 'rosto')
+            posicao.style.backgroundImage = `url(${fotoJogador})`;
             jogadoresEscalados.push(id)
             if(contagemPosicao < 11){
                 contagemPosicao++

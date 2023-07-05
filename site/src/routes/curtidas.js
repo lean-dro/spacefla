@@ -3,7 +3,7 @@ var router = express.Router()
 
 var curtidaController = require("../controllers/curtidaController")
 
-router.post("/verificar", function(req,res) {
+router.get("/verificar/:idUsuario/:idCorneta", function(req,res) {
     curtidaController.verificarCurtida(req,res)
 })
 module.exports = router
