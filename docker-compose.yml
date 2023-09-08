@@ -1,0 +1,30 @@
+version: '1.0'
+services:
+  banco:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - rede-spacefla
+    volumes:
+      - ./banco/dump:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: flamengo
+
+
+  spacefla: 
+    restart: always
+    image: lean-dro_docker/spacefla_docker:1.0
+    build: 
+      context: .
+    container_name: spacefla
+    ports:
+      - "3333:3333" 
+    networks: 
+      - rede-spacefla
+    depends_on:
+      - banco
+  
+
+networks:
+  rede-spacefla:
+    driver: bridge

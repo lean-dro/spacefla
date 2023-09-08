@@ -1,3 +1,0 @@
-CREATE USER 'spacefla-admin'@'localhost' IDENTIFIED BY '81-19-22';
- GRANT ALL PRIVILEGES ON *.* TO 'spacefla-admin'@'localhost';
- FLUSH PRIVILEGES;
